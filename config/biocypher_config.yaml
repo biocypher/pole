@@ -5,6 +5,11 @@ biocypher:
   debug: false
   schema_config_path: config/schema_config.yaml
 
+  head_ontology: 
+    url: http://semanticweb.cs.vu.nl/2009/11/sem/
+    root_node: Core
+    format: rdf
+
 neo4j:
   delimiter: '\t'
   array_delimiter: '|'

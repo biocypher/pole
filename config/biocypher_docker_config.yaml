@@ -6,6 +6,11 @@ biocypher:
   schema_config_path: config/schema_config.yaml
   output_directory: data/build2neo
 
+  head_ontology: 
+    url: http://semanticweb.cs.vu.nl/2009/11/sem/
+    root_node: Core
+    format: rdf
+
 neo4j:
   database_name: neo4j
   wipe: true
