@@ -128,6 +128,9 @@ class PoleAdapter:
 
         data = pd.read_csv("data/pole.csv", dtype=str)
 
+        # screen the entire data frame for double quotes
+        data = data.applymap(lambda x: x.replace('"', "") if isinstance(x, str) else x)
+
         # rename 'id' to 'hash'
         data.rename(columns={"id": "hash"}, inplace=True)
 
