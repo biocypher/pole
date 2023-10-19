@@ -16,7 +16,6 @@ ont = bc._get_ontology()
 print(ont._nx_graph.nodes)
 
 adapter = PoleAdapter()
-# nodes = list(adapter.get_nodes())
 bc.write_nodes(adapter.get_nodes())
 bc.write_edges(adapter.get_edges())
 

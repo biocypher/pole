@@ -11,6 +11,16 @@ person:
         phone: str
         email: str
 
+officer:
+    is_a: person
+    represented_as: node
+    input_label: :Officer
+    properties:
+        name: str
+        surname: str
+        rank: str
+        badge_no: str
+
 knows:
     is_a: [fact, core]
     represented_as: edge
@@ -67,6 +77,12 @@ party to:
     label_as_edge: PARTY_TO
     input_label: PARTY_TO
 
+investigated by:
+    is_a: [fact, core]
+    represented_as: edge
+    label_as_edge: INVESTIGATED_BY
+    input_label: INVESTIGATED_BY
+
 phone call:
     is_a: event
     represented_as: node
@@ -88,3 +104,10 @@ received call:
     represented_as: edge
     label_as_edge: RECEIVED_CALL
     input_label: RECEIVED_CALL
+
+object:
+    represented_as: node
+    input_label: :Object
+    properties:
+        type: str
+        description: str

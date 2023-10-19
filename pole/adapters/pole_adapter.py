@@ -15,9 +15,11 @@ class PoleAdapterNodeType(Enum):
     """
 
     PERSON = ":Person"
+    OFFICER = ":Officer"
     LOCATION = ":Location"
     CRIME = ":Crime"
     PHONE_CALL = ":PhoneCall"
+    OBJECT = ":Object"
 
 
 class PoleAdapterPersonField(Enum):
@@ -31,6 +33,18 @@ class PoleAdapterPersonField(Enum):
     NHS_NO = "nhs_no"
     PHONE = "phone"
     EMAIL = "email"
+
+
+class PoleAdapterOfficerField(Enum):
+    """
+    Define possible fields the adapter can provide for officers.
+    """
+
+    ID = "_id"
+    NAME = "name"
+    SURNAME = "surname"
+    RANK = "rank"
+    BADGE_NUMBER = "badge_no"
 
 
 class PoleAdapterLocationField(Enum):
@@ -67,6 +81,16 @@ class PoleAdapterPhoneCallField(Enum):
     DATE = "call_date"
     TIME = "call_time"
     DURATION = "call_duration"
+
+
+class PoleAdapterObjectField(Enum):
+    """
+    Define possible fields the adapter can provide for objects.
+    """
+
+    ID = "_id"
+    TYPE = "type"
+    DESCRIPTION = "description"
 
 
 class PoleAdapterEdgeType(Enum):
