@@ -26,12 +26,16 @@ knows:
     represented_as: edge
     label_as_edge: KNOWS
     input_label: KNOWS
+    source: person
+    target: person
 
 is related to:
     is_a: [fact, core]
     represented_as: edge
     label_as_edge: IS_RELATED_TO
     input_label: FAMILY_REL
+    source: person
+    target: person
 
 location:
     is_a: place
@@ -48,6 +52,8 @@ lives at:
     represented_as: edge
     label_as_edge: LIVES_AT
     input_label: CURRENT_ADDRESS
+    source: person
+    target: location
 
 crime:
     is_a: event
@@ -64,24 +70,24 @@ occurred at:
     represented_as: edge
     label_as_edge: OCCURRED_AT
     input_label: OCCURRED_AT
-
-involved in:
-    is_a: [fact, core]
-    represented_as: edge
-    label_as_edge: INVOLVED_IN
-    input_label: INVOLVED_IN
+    source: crime
+    target: location
 
 party to:
     is_a: [fact, core]
     represented_as: edge
     label_as_edge: PARTY_TO
     input_label: PARTY_TO
+    source: person
+    target: crime
 
 investigated by:
     is_a: [fact, core]
     represented_as: edge
     label_as_edge: INVESTIGATED_BY
     input_label: INVESTIGATED_BY
+    source: crime
+    target: officer
 
 phone call:
     is_a: event
@@ -98,12 +104,16 @@ made call:
     represented_as: edge
     label_as_edge: MADE_CALL
     input_label: MADE_CALL
+    source: person
+    target: phone call
 
 received call:
     is_a: event
     represented_as: edge
     label_as_edge: RECEIVED_CALL
     input_label: RECEIVED_CALL
+    source: person
+    target: phone call
 
 object:
     represented_as: node
@@ -111,3 +121,11 @@ object:
     properties:
         type: str
         description: str
+
+involved in:
+    is_a: [fact, core]
+    represented_as: edge
+    label_as_edge: INVOLVED_IN
+    input_label: INVOLVED_IN
+    source: object
+    target: crime
