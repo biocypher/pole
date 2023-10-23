@@ -1,10 +1,9 @@
 [tool.poetry]
-name = "biocypher-project-template"
+name = "pole"
 version = "0.1.0"
-description = "Template for creating a BioCypher-driven knowledge graph"
+description = "Knowledge Graph of Crime Demo dataset"
 authors = [
     "Sebastian Lobentanzer <sebastian.lobentanzer@gmail.com>",
-    "Andreas Maier <andreas.maier-1@uni-hamburg.de>",
 ]
 license = "MIT"
 readme = "README.md"
