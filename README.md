@@ -39,3 +39,7 @@ a query and execute it on the database. The generated query and results will be
 displayed in the space below the interface. You can modify the query and rerun
 it (`CMD+Enter` on Mac, `Ctrl+Enter` on Windows) without having to call the
 LLM again. To generate a new query, simply update the query text.
+
+You can also visit [http://localhost:7474](http://localhost:7474) to access the
+Neo4j browser interface. It requires no authentication (simply press `Connect`)
+and allows you to explore the database and run Cypher queries.
