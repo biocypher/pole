@@ -29,7 +29,7 @@ docker compose up -d
 The Docker compose workflow will take care of building the database, importing
 and deploying in Neo4j, and starting the ChatGSE app. Given you have provided
 your API key, you can now open the ChatGSE app in your browser at
-[localhost:8051](localhost:8051). To query the knowledge graph,
+[https://localhost:8501](https://localhost:8501). To query the knowledge graph,
 navigate to the `Knowledge Graph` tab, set the database IP to `deploy` (the name
 of the Docker service that runs the Neo4j database), and upload the
 `schema_info.yaml` file from the root directory of this repository. If the
