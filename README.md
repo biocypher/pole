@@ -7,7 +7,7 @@ graph using BioChatter and ChatGSE. The dataset is a public dataset from
 Manchester, U.K.
 
 
-## ⚙️ Installation (local, for docker see below)
+## ⚙️ Installation (local using Docker)
 To start a local instance of the Neo4j database and ChatGSE, clone the
 repository and run the Docker compose setup. [Docker](https://www.docker.com/)
 needs to be installed and running on your machine.
