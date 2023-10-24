@@ -20,6 +20,7 @@ will fail.
 ```{bash}
 git clone https://github.com/biocypher/pole.git
 cd pole
+export OPENAI_API_KEY=sk-...  # or add it to your .bashrc or .zshrc
 docker compose up -d
 ```
 
