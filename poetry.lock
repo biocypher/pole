@@ -8,7 +8,7 @@ python-versions = "*"
 
 [[package]]
 name = "biocypher"
-version = "0.5.25"
+version = "0.5.26"
 description = "A unifying framework for biomedical research knowledge graphs"
 category = "main"
 optional = false
@@ -424,8 +424,8 @@ appdirs = [
     {file = "appdirs-1.4.4.tar.gz", hash = "sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41"},
 ]
 biocypher = [
-    {file = "biocypher-0.5.25-py3-none-any.whl", hash = "sha256:a0fc7a05c7666f5ed34fdbd5f5a505205adfb7e2817c0bc81405dc951b30f151"},
-    {file = "biocypher-0.5.25.tar.gz", hash = "sha256:c615501b0c066f88e195e93fdf465d5347cefbc0458f781ebbcf33fb40aae4a4"},
+    {file = "biocypher-0.5.26-py3-none-any.whl", hash = "sha256:5832684fba37d985e886c4cf9dc102eed0015e2218d541f3d657ec361ae1c1e1"},
+    {file = "biocypher-0.5.26.tar.gz", hash = "sha256:9e112af0c9effd165a3ee43424ec23e9c9b8f1070952e983c1478dcf8f80ca34"},
 ]
 certifi = [
     {file = "certifi-2023.7.22-py3-none-any.whl", hash = "sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9"},
