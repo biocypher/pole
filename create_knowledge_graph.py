@@ -8,8 +8,6 @@ from pole.adapters.pole_adapter import (
 )
 
 bc = BioCypher()
-ont = bc._get_ontology()
-print(ont._nx_graph.nodes)
 
 adapter = PoleAdapter()
 bc.write_nodes(adapter.get_nodes())
@@ -22,3 +20,7 @@ bc.write_schema_info(as_node=True)
 
 # Print summary
 bc.summary()
+
+# # Ontology information
+# ont = bc._get_ontology()
+# print(ont._nx_graph.nodes)
