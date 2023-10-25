@@ -137,11 +137,11 @@ class PoleAdapter:
         self._caller_data = self._get_caller_data()
         self._called_data = self._get_called_data()
 
-        # print unique _labels
-        print(f"Unique labels: {self._data['_labels'].unique()}")
+        # # print unique _labels
+        # print(f"Unique labels: {self._data['_labels'].unique()}")
 
-        # print unique _type
-        print(f"Unique types: {self._data['_type'].unique()}")
+        # # print unique _type
+        # print(f"Unique types: {self._data['_type'].unique()}")
 
     def _read_csv(self):
         """
@@ -152,7 +152,7 @@ class PoleAdapter:
         data = pd.read_csv("data/pole.csv", dtype=str)
 
         # screen the entire data frame for double quotes
-        data = data.applymap(lambda x: x.replace('"', "") if isinstance(x, str) else x)
+        data = data.map(lambda x: x.replace('"', "") if isinstance(x, str) else x)
 
         # rename 'id' to 'hash'
         data.rename(columns={"id": "hash"}, inplace=True)
