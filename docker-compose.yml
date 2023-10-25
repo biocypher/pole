@@ -48,7 +48,7 @@ services:
         condition: service_completed_successfully
 
   app:
-    image: biocypher/chatgse:0.2.34
+    image: biocypher/chatgse:0.2.35
     container_name: app
     ports:
       - "8501:8501"
