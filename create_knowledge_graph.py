@@ -5,10 +5,6 @@ pd.set_option("display.max_columns", None)
 from biocypher import BioCypher
 from pole.adapters.pole_adapter import (
     PoleAdapter,
-    # PoleAdapterNodeType,
-    # PoleAdapterEdgeType,
-    # PoleAdapterProteinField,
-    # PoleAdapterDiseaseField,
 )
 
 bc = BioCypher()

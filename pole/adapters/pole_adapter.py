@@ -100,7 +100,6 @@ class PoleAdapterEdgeType(Enum):
 
     LIVES_AT = "CURRENT_ADDRESS"
     KNOWS = "KNOWS"
-    HAS_POSTCODE = "HAS_POSTCODE"
     INVOLVED_IN = "INVOLVED_IN"
     MADE_CALL = "CALLED"  # abstract
     RECEIVED_CALL = "CALLER"  # abstract
