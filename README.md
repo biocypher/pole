@@ -31,14 +31,17 @@ and deploying in Neo4j, and starting the ChatGSE app. Given you have provided
 your API key, you can now open the ChatGSE app in your browser at
 [http://localhost:8501](http://localhost:8501). To query the knowledge graph,
 navigate to the `Knowledge Graph` tab, set the database IP to `deploy` (the name
-of the Docker service that runs the Neo4j database), and upload the
-`schema_info.yaml` file from the root directory of this repository. If the
-database is connected and the file is uploaded, you should be able to see the
-query text interface. Entering a query and confirming with `Enter` will generate
-a query and execute it on the database. The generated query and results will be
-displayed in the space below the interface. You can modify the query and rerun
-it (`CMD+Enter` on Mac, `Ctrl+Enter` on Windows) without having to call the
-LLM again. To generate a new query, simply update the query text.
+of the Docker service that runs the Neo4j database). Now you should be able to 
+see the query text interface. Entering a query and confirming with `Enter` will 
+generate a query and execute it on the database. The generated query and results 
+will be displayed in the space below the interface. You can modify the query and 
+rerun it (`CMD+Enter` on Mac, `Ctrl+Enter` on Windows) without having to call 
+the LLM again. To generate a new query, simply update the query text.
+
+Some example queries:
+- `where happened most crimes`
+- `who committed the most crimes`
+- `who knows people that committed many crimes while not being criminal themselves`
 
 You can also visit [http://localhost:7474](http://localhost:7474) to access the
 Neo4j browser interface. It requires no authentication (simply press `Connect`)
