@@ -42,27 +42,33 @@ services:
       - "127.0.0.1:7474:7474"
       - "127.0.0.1:7687:7687"
     networks:
-      - chatgse
+      - biochatter
     depends_on:
       import:
         condition: service_completed_successfully
 
   app:
-    image: biocypher/chatgse:0.3.2
+    image: biocypher/biochatter-light:0.4.7
     container_name: app
     ports:
       - "8501:8501"
     networks:
-      - chatgse
+      - biochatter
     depends_on:
       import:
         condition: service_completed_successfully
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DOCKER_COMPOSE=true
+      - CHAT_TAB=false
+      - PROMPT_ENGINEERING_TAB=false
+      - RAG_TAB=false
+      - CORRECTING_AGENT_TAB=false
+      - KNOWLEDGE_GRAPH_TAB=true
 
 volumes:
   biocypher_neo4j_volume:
 
 
 networks:
-  chatgse:
+  biochatter:
