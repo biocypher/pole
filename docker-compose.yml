@@ -48,7 +48,7 @@ services:
         condition: service_completed_successfully
 
   app:
-    image: biocypher/biochatter-light:0.4.7
+    image: biocypher/biochatter-light:0.6.10
     container_name: app
     ports:
       - "8501:8501"
