@@ -13,7 +13,8 @@ To start a local instance of the Neo4j database and BioChatter Light, clone the
 repository and run the Docker compose setup. [Docker](https://www.docker.com/)
 needs to be installed and running on your machine.
 
-> :warning: Important note: For using the OpenAI GPT model that is called from
+> [!IMPORTANT]
+> For using the OpenAI GPT model that is called from
 BioChatter Light, you need to provide your OpenAI API key through the environment
 variable `OPENAI_API_KEY`. If you do not provide a key, the query generation
 will fail.
