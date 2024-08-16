@@ -1,4 +1,4 @@
-# POLE Crime Demo dataset - BioCypher, BioChatter, and ChatGSE
+# POLE Crime Demo dataset - BioCypher & BioChatter
 
 We use the [pole
 dataset](https://github.com/neo4j-graph-examples/pole/tree/main) to demonstrate
@@ -8,12 +8,12 @@ Manchester, U.K.
 
 
 ## ⚙️ Installation (local using Docker)
-To start a local instance of the Neo4j database and ChatGSE, clone the
+To start a local instance of the Neo4j database and BioChatter Light, clone the
 repository and run the Docker compose setup. [Docker](https://www.docker.com/)
 needs to be installed and running on your machine.
 
 > :warning: Important note: For using the OpenAI GPT model that is called from
-ChatGSE, you need to provide your OpenAI API key through the environment
+BioChatter Light, you need to provide your OpenAI API key through the environment
 variable `OPENAI_API_KEY`. If you do not provide a key, the query generation
 will fail.
 
@@ -27,8 +27,8 @@ docker compose up -d
 ## 🛠 Usage
 
 The Docker compose workflow will take care of building the database, importing
-and deploying in Neo4j, and starting the ChatGSE app. Given you have provided
-your API key, you can now open the ChatGSE app in your browser at
+and deploying in Neo4j, and starting the BioChatter Light app. Given you have provided
+your API key, you can now open the BioChatter Light app in your browser at
 [http://localhost:8501](http://localhost:8501). To query the knowledge graph,
 navigate to the `Knowledge Graph` tab, set the database IP to `deploy` (the name
 of the Docker service that runs the Neo4j database). Now you should be able to 
