@@ -39,7 +39,7 @@ interface. You can modify the query and rerun it (`CMD+Enter` on Mac, `Ctrl+Ente
 Windows) without having to call the LLM again. To generate a new query, simply update
 the question text.
 
-Some example queries:
+Some example questions:
 - `where happened most crimes`
 - `who committed the most crimes`
 - `who knows people that committed many crimes while not being criminal themselves`
