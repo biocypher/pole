@@ -3,7 +3,7 @@
 We use the [pole
 dataset](https://github.com/neo4j-graph-examples/pole/tree/main) to demonstrate
 the building of a BioCypher knowledge graph and the facilitation of querying the
-graph using BioChatter and ChatGSE. The dataset is a public dataset from
+graph using BioChatter and BioChatter Light. The dataset is a public dataset from
 Manchester, U.K.
 
 
