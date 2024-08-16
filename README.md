@@ -30,14 +30,14 @@ docker compose up -d
 The Docker compose workflow will take care of building the database, importing
 and deploying in Neo4j, and starting the BioChatter Light app. Given you have provided
 your API key, you can now open the BioChatter Light app in your browser at
-[http://localhost:8501](http://localhost:8501). To query the knowledge graph,
-navigate to the `Knowledge Graph` tab, set the database IP to `deploy` (the name
-of the Docker service that runs the Neo4j database). Now you should be able to 
-see the query text interface. Entering a query and confirming with `Enter` will 
-generate a query and execute it on the database. The generated query and results 
-will be displayed in the space below the interface. You can modify the query and 
-rerun it (`CMD+Enter` on Mac, `Ctrl+Enter` on Windows) without having to call 
-the LLM again. To generate a new query, simply update the query text.
+[http://localhost:8501](http://localhost:8501). Via the configuration in the
+`docker-compose.yml`, we already set BioChatter Light to only display the knowledge
+graph tab, and the correct connection details should be set. Entering a question and 
+confirming with `Enter` will generate a Cypher query (via BioChatter) and execute it on
+the database. The generated query and results will be displayed in the space below the 
+interface. You can modify the query and rerun it (`CMD+Enter` on Mac, `Ctrl+Enter` on
+Windows) without having to call the LLM again. To generate a new query, simply update
+the question text.
 
 Some example queries:
 - `where happened most crimes`
