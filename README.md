@@ -4,7 +4,8 @@ We use the [pole
 dataset](https://github.com/neo4j-graph-examples/pole/tree/main) to demonstrate
 the building of a BioCypher knowledge graph and the facilitation of querying the
 graph using BioChatter and BioChatter Light. The dataset is a public synthetic 
-dataset from Manchester, U.K.
+dataset from Manchester, U.K. Check our vignette for more details:
+[https://biochatter.org/vignettes/kg/](https://biochatter.org/vignettes/kg/)
 
 
 ## ⚙️ Installation (local using Docker)
