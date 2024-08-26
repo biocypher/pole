@@ -1,11 +1,11 @@
 from biocypher import BioCypher
 from pole.adapters.pole_adapter import (
-    PoleAdapter,
+    CustomAdapter,
 )
 
 bc = BioCypher()
 
-adapter = PoleAdapter()
+adapter = CustomAdapter()
 bc.write_nodes(adapter.get_nodes())
 bc.write_edges(adapter.get_edges())
 
