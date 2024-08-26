@@ -5,6 +5,7 @@ case_study:
   represented_as: node 
 
   input_label: case study 
+  synonym_for: case
 
   properties: 
 
@@ -19,6 +20,7 @@ organ:
   represented_as: node 
 
   input_label: organ 
+  synonym_for: gross anatomical structure 
 
   properties: 
 
@@ -26,558 +28,558 @@ organ:
 
   
 
-adverse_outcome_pathway: 
+# adverse_outcome_pathway: 
 
-  synonym_for: AOP 
+#   synonym_for: AOP 
 
-  represented_as: node 
+#   represented_as: node 
 
-  input_label: adverse outcome pathway 
+#   input_label: adverse outcome pathway 
 
-  properties: 
+#   properties: 
 
-    name: str 
+#     name: str 
 
-    AOP-Wiki ID: int 
+#     AOP-Wiki ID: int 
 
-    author: str 
-
-  
-
-key_event: 
-
-  synonym_for: KE 
-
-  represented_as: node 
-
-  input_label: key event 
-
-  properties: 
-
-    name: str 
-
-    description: str 
-
-    AOP-Wiki ID: int 
-
-    author: str 
+#     author: str 
 
   
 
-chemical: 
+# key_event: 
 
-  synonym_for: stressor, compound 
+#   synonym_for: KE 
 
-  represented_as: node 
+#   represented_as: node 
 
-  input_label: chemical 
+#   input_label: key event 
 
-  properties: 
+#   properties: 
 
-    name: str 
+#     name: str 
 
-    CAS: str 
+#     description: str 
 
-    SMILES: str 
+#     AOP-Wiki ID: int 
 
-    InChIKey: str 
-
-    chemical group: str 
+#     author: str 
 
   
 
-bioassay: 
+# chemical: 
 
-  synonym_for: method, measurement, assay 
+#   synonym_for: stressor, compound 
 
-  represented_as: node 
+#   represented_as: node 
 
-  input_label: bioassay 
+#   input_label: chemical 
 
-  properties: 
+#   properties: 
 
-    name: str 
+#     name: str 
 
-    measured: str 
+#     CAS: str 
 
-  
+#     SMILES: str 
 
-model_system: 
+#     InChIKey: str 
 
-  synonym_for: model 
-
-  represented_as: node 
-
-  input_label: model system 
-
-  properties: 
-
-    name: str 
-
-    cell type: str 
-
-    description: str 
+#     chemical group: str 
 
   
 
-computational_model: 
+# bioassay: 
 
-  synonym_for: model 
+#   synonym_for: method, measurement, assay 
 
-  represented_as: node 
+#   represented_as: node 
 
-  input_label: computational model 
+#   input_label: bioassay 
 
-  properties: 
+#   properties: 
 
-    name: str 
+#     name: str 
 
-    type: str 
-
-    language: str 
-
-    input: str 
-
-    output: str 
+#     measured: str 
 
   
 
-endpoint: 
+# model_system: 
 
-  represented_as: node 
+#   synonym_for: model 
 
-  input_label: endpoint 
+#   represented_as: node 
 
-  properties: 
+#   input_label: model system 
 
-    name: str 
+#   properties: 
 
-    description: str 
+#     name: str 
 
-    type: str 
+#     cell type: str 
 
-  
-
-experimental_condition: 
-
-  represented_as: node 
-
-  input_label: experimental condition 
-
-  properties: 
-
-    condition_name: str 
-
-    description: str 
-
-    temperature: float 
-
-    humidity: float 
-
-    exposure_duration: int  # in hours or days 
+#     description: str 
 
   
 
-data: 
-  represented_as: node 
-  input_label: data 
-  properties: 
+# computational_model: 
 
-    dataset_name: str 
+#   synonym_for: model 
 
-    description: str 
+#   represented_as: node 
 
-    format: str  # e.g., CSV, Excel 
+#   input_label: computational model 
 
-    size: int  # size in MB or GB 
+#   properties: 
+
+#     name: str 
+
+#     type: str 
+
+#     language: str 
+
+#     input: str 
+
+#     output: str 
+
+  
+
+# endpoint: 
+
+#   represented_as: node 
+
+#   input_label: endpoint 
+
+#   properties: 
+
+#     name: str 
+
+#     description: str 
+
+#     type: str 
+
+  
+
+# experimental_condition: 
+
+#   represented_as: node 
+
+#   input_label: experimental condition 
+
+#   properties: 
+
+#     condition_name: str 
+
+#     description: str 
+
+#     temperature: float 
+
+#     humidity: float 
+
+#     exposure_duration: int  # in hours or days 
+
+  
+
+# data: 
+#   represented_as: node 
+#   input_label: data 
+#   properties: 
+
+#     dataset_name: str 
+
+#     description: str 
+
+#     format: str  # e.g., CSV, Excel 
+
+#     size: int  # size in MB or GB 
 
 
   
 
-case_study_to_organ: 
+# case_study_to_organ: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: case_study 
+#   source: case_study 
 
-  target: organ 
+#   target: organ 
 
-  input_label: case study related organ 
-
-  
-
-case_study_to_adverse_outcome_pathway: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: case_study 
-
-  target: adverse_outcome_pathway 
-
-  input_label: case study related adverse outcome pathway 
+#   input_label: case study related organ 
 
   
 
-adverse_outcome_pathway_to_key_event: 
+# case_study_to_adverse_outcome_pathway: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: adverse_outcome_pathway 
+#   source: case_study 
 
-  target: key_event 
+#   target: adverse_outcome_pathway 
 
-  input_label: key events of adverse outcome pathway 
-
-  
-
-chemical_to_bioassay: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: chemical 
-
-  target: bioassay 
-
-  input_label: chemical measured with bioassay 
+#   input_label: case study related adverse outcome pathway 
 
   
 
-chemical_to_adverse_outcome_pathway: 
+# adverse_outcome_pathway_to_key_event: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: chemical 
+#   source: adverse_outcome_pathway 
 
-  target: adverse_outcome_pathway 
+#   target: key_event 
 
-  input_label: chemical to adverse outcome pathway 
-
-  properties: 
-
-      stressor id: int 
+#   input_label: key events of adverse outcome pathway 
 
   
 
-chemical_to_key_event: 
+# chemical_to_bioassay: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: chemical 
+#   source: chemical 
 
-  target: key_event 
+#   target: bioassay 
 
-  input_label: chemical to key event 
-
-  
-
-key_event_to_key_event: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: key_event 
-
-  target: key_event 
-
-  input_label: key event to key event 
-
-  properties: 
-
-      AOP-Wiki KER ID: int 
-
-      Biological plausibility: str 
-
-      Empirical support: str 
+#   input_label: chemical measured with bioassay 
 
   
 
-key_event_to_bioassay: 
+# chemical_to_adverse_outcome_pathway: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: key_event 
+#   source: chemical 
 
-  target: bioassay 
+#   target: adverse_outcome_pathway 
 
-  input_label: key event measured by bioassay 
+#   input_label: chemical to adverse outcome pathway 
 
-  
+#   properties: 
 
-bioassay_to_model_system: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: bioassay 
-
-  target: model_system 
-
-  input_label: bioassay executed on model system 
+#       stressor id: int 
 
   
 
-computational_model_to_adverse_outcome_pathway: 
+# chemical_to_key_event: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: computational_model 
+#   source: chemical 
 
-  target: adverse_outcome_pathway 
+#   target: key_event 
 
-  input_label: computational model related to adverse outcome pathway 
-
-  
-
-computational_model_to_key_event: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: computational_model 
-
-  target: key_event 
-
-  input_label: computational model measures key event 
+#   input_label: chemical to key event 
 
   
 
-case_study_to_chemical: 
+# key_event_to_key_event: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: case_study 
+#   source: key_event 
 
-  target: chemical 
+#   target: key_event 
 
-  input_label: case study relevant chemical 
+#   input_label: key event to key event 
 
-  
+#   properties: 
 
-case_study_to_model_system: 
+#       AOP-Wiki KER ID: int 
 
-  is_a: association 
+#       Biological plausibility: str 
 
-  represented_as: edge 
-
-  source: case_study 
-
-  target: model_system 
-
-  input_label: case study relevant model system 
+#       Empirical support: str 
 
   
 
-case_study_to_computational_model: 
+# key_event_to_bioassay: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: case_study 
+#   source: key_event 
 
-  target: computational_model 
+#   target: bioassay 
 
-  input_label: case study relevant computational model 
-
-  
-
-adverse_outcome_pathway_to_organ: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: adverse_outcome_pathway 
-
-  target: organ 
-
-  input_label: adverse outcome pathway to organ 
+#   input_label: key event measured by bioassay 
 
   
 
-key_event_to_organ: 
+# bioassay_to_model_system: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: key_event 
+#   source: bioassay 
 
-  target: organ 
+#   target: model_system 
 
-  input_label: key event to organ 
-
-  
-
-key_event_to_model_system: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: key_event 
-
-  target: model_system 
-
-  input_label: key event to model system 
+#   input_label: bioassay executed on model system 
 
   
 
-chemical_to_model_system: 
+# computational_model_to_adverse_outcome_pathway: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: chemical 
+#   source: computational_model 
 
-  target: model_system 
+#   target: adverse_outcome_pathway 
 
-  input_label: chemical to model system 
-
-  
-
-chemical_to_computational_model: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: chemical 
-
-  target: computational_model 
-
-  input_label: chemical to computational model 
+#   input_label: computational model related to adverse outcome pathway 
 
   
 
-bioassay_to_organ: 
+# computational_model_to_key_event: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: bioassay 
+#   source: computational_model 
 
-  target: organ 
+#   target: key_event 
 
-  input_label: bioassay related to organ 
-
-  
-
-model_system_to_organ: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: model_system 
-
-  target: organ 
-
-  input_label: model system represents organ 
+#   input_label: computational model measures key event 
 
   
 
-computational_model_to_organ: 
+# case_study_to_chemical: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: computational_model 
+#   source: case_study 
 
-  target: organ 
+#   target: chemical 
 
-  input_label: computational model related to organ 
-
-  
-
-case_study_to_endpoint: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: case_study 
-
-  target: endpoint 
-
-  input_label: case study to endpoint 
+#   input_label: case study relevant chemical 
 
   
 
-key_event_to_endpoint: 
+# case_study_to_model_system: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: key_event 
+#   source: case_study 
 
-  target: endpoint 
+#   target: model_system 
 
-  input_label: key event to endpoint 
-
-  
-
-bioassay_to_experimental_condition: 
-
-  is_a: association 
-
-  represented_as: edge 
-
-  source: bioassay 
-
-  target: experimental_condition 
-
-  input_label: bioassay to experimental condition 
+#   input_label: case study relevant model system 
 
   
 
-model_system_to_data: 
+# case_study_to_computational_model: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: model_system 
+#   source: case_study 
 
-  target: data 
+#   target: computational_model 
 
-  input_label: model system to data 
+#   input_label: case study relevant computational model 
 
   
 
-computational_model_to_data: 
+# adverse_outcome_pathway_to_organ: 
 
-  is_a: association 
+#   is_a: association 
 
-  represented_as: edge 
+#   represented_as: edge 
 
-  source: computational_model 
+#   source: adverse_outcome_pathway 
 
-  target: data 
+#   target: organ 
 
-  input_label: computational model to data 
+#   input_label: adverse outcome pathway to organ 
+
+  
+
+# key_event_to_organ: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: key_event 
+
+#   target: organ 
+
+#   input_label: key event to organ 
+
+  
+
+# key_event_to_model_system: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: key_event 
+
+#   target: model_system 
+
+#   input_label: key event to model system 
+
+  
+
+# chemical_to_model_system: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: chemical 
+
+#   target: model_system 
+
+#   input_label: chemical to model system 
+
+  
+
+# chemical_to_computational_model: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: chemical 
+
+#   target: computational_model 
+
+#   input_label: chemical to computational model 
+
+  
+
+# bioassay_to_organ: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: bioassay 
+
+#   target: organ 
+
+#   input_label: bioassay related to organ 
+
+  
+
+# model_system_to_organ: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: model_system 
+
+#   target: organ 
+
+#   input_label: model system represents organ 
+
+  
+
+# computational_model_to_organ: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: computational_model 
+
+#   target: organ 
+
+#   input_label: computational model related to organ 
+
+  
+
+# case_study_to_endpoint: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: case_study 
+
+#   target: endpoint 
+
+#   input_label: case study to endpoint 
+
+  
+
+# key_event_to_endpoint: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: key_event 
+
+#   target: endpoint 
+
+#   input_label: key event to endpoint 
+
+  
+
+# bioassay_to_experimental_condition: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: bioassay 
+
+#   target: experimental_condition 
+
+#   input_label: bioassay to experimental condition 
+
+  
+
+# model_system_to_data: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: model_system 
+
+#   target: data 
+
+#   input_label: model system to data 
+
+  
+
+# computational_model_to_data: 
+
+#   is_a: association 
+
+#   represented_as: edge 
+
+#   source: computational_model 
+
+#   target: data 
+
+#   input_label: computational model to data 
