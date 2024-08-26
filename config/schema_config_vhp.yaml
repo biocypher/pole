@@ -4,7 +4,7 @@ case_study:
 
   represented_as: node 
 
-  input_label: case study 
+  input_label: CaseStudy 
   synonym_for: case
 
   properties: 
@@ -19,7 +19,7 @@ organ:
 
   represented_as: node 
 
-  input_label: organ 
+  input_label: Organ 
   synonym_for: gross anatomical structure 
 
   properties: 
@@ -195,18 +195,12 @@ organ:
 
 
   
-
-# case_study_to_organ: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: case_study 
-
-#   target: organ 
-
-#   input_label: case study related organ 
+case_study_to_organ: 
+  is_a: association 
+  represented_as: edge 
+  source: case_study 
+  target: organ 
+  input_label: case_study_related_organ 
 
   
 

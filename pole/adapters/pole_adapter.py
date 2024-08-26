@@ -35,7 +35,7 @@ class CustomAdapterEdgeType(Enum):
     """
     Define possible edges the adapter can provide.
     """
-    STUDIES_AFFECT = "STUDIES_AFFECT"
+    case_study_related_organ  = "case_study_related_organ "
 
 
 
@@ -94,7 +94,7 @@ class CustomAdapter:
                 None,
                 row["case_study"],
                 row["organ"],
-                CustomAdapterEdgeType.STUDIES_AFFECT.value,
+                CustomAdapterEdgeType.case_study_related_organ.value,
                 {}
             )
 
