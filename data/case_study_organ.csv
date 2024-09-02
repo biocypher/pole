@@ -1,4 +1,10 @@
-case_study,organ
-Pesticides,brain
-Pharmacovigilance,kidney
-Thyroid-mediated neurodevelopmental toxicity,brain
+_id,_labels,CaseStudy,organ,_start,_end,_type,rel_type
+1,:CaseStudy,Pesticides,,,,,
+2,:organ,,brain,,,,
+3,:CaseStudy,Pharmacovigilance,,,,,
+4,:organ,,kidney,,,,
+5,:CaseStudy,Thyroid-mediated neurodevelopmental toxicity,,,,,
+6,:organ,,brain,,,,
+,,,,"1","2",case_study_related_organ
+,,,,"3","4",case_study_related_organ
+,,,,"5","6",case_study_related_organ

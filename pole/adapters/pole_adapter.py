@@ -13,8 +13,8 @@ class CustomAdapterNodeType(Enum):
     """
     Define types of nodes the adapter can provide.
     """
-    CASE_STUDY = ":CaseStudy"
-    ORGAN = ":Organ"
+    CASESTUDY = ":CaseStudy"
+    ORGAN = ":organ"
 
 
 
@@ -22,7 +22,7 @@ class CustomAdapterCaseStudyField(Enum):
     """
     Define possible fields the adapter can provide for case studies.
     """
-    NAME = "case_study"
+    NAME = "CaseStudy"
 
 class CustomAdapterOrganField(Enum):
     """
@@ -35,7 +35,7 @@ class CustomAdapterEdgeType(Enum):
     """
     Define possible edges the adapter can provide.
     """
-    case_study_related_organ  = "case_study_related_organ "
+    case_study_related_organ = "case_study_related_organ"
 
 
 
@@ -53,6 +53,45 @@ class CustomAdapter:
     ):
         self._set_types_and_fields(node_types, node_fields, edge_types, edge_fields)
         self._data = self._read_csv()
+        self._node_data = self._get_node_data()
+        self._edge_data = self._get_edge_data()
+        self._organ_data = self._get_organ_data()
+
+        # print unique _labels
+        print(f"Unique labels: {self._data['_labels'].unique()}")
+        # print unique _type
+        print(f"Unique types: {self._data['_type'].unique()}")
+
+    def _get_node_data(self):
+        """
+        Get all rows that do not have a _type.
+        """
+        return self._data[self._data["_type"].isnull()]
+
+    def _get_edge_data(self):
+        """
+        Get all rows that have a _type.
+        """
+        return self._data[self._data["_type"].notnull()]
+    
+    def _get_organ_data(self):
+        """
+        Subset to only case study organ relationships.
+        """
+        return self._data[self._data["_type"] == "case_study_related_organ"][["_start", "_end"]]
+    
+    def _get_organ(self, _id):
+        """
+        Get organ for case study.
+        """
+        if not _id in self._organ_data["_start"].values:
+            return None
+
+        organ_id = self._organ_data[self._organ_data["_start"] == _id]["_end"].values[0]
+        organ = self._data[self._data["_id"] == organ_id]["organ"].values[0]
+        #print(organ)
+        #print(organ_id)
+        return organ
 
     def _read_csv(self):
         """
@@ -67,20 +106,34 @@ class CustomAdapter:
         adapter constructor.
         """
         logger.info("Generating nodes.")
+        
+        node_count = 0
+        for index, row in self._node_data.iterrows():
+            _id = row["_id"]
+            _type = row["_labels"]  # Don't strip the colon if it's part of the label
+            
+            logger.info(f"Processing node: ID={_id}, Type={_type}")
 
-        for case_study in self._data["case_study"].unique():
-            yield (
-                case_study,
-                CustomAdapterNodeType.CASE_STUDY.value,
-                {"name": case_study}
-            )
+            if _type not in self.node_types:
+                logger.info(f"Skipping node with ID={_id} due to type mismatch.")
+                continue
 
-        for organ in self._data["organ"].unique():
+            _props = {}
+            if _type == ':CaseStudy':
+                _props['name'] = row.get('CaseStudy', None)
+            elif _type == ':organ':
+                _props['name'] = row.get('organ', None)
+            
+            logger.info(f"Yielding node: ID={_id}, Type={_type}, Properties={_props}")
+            node_count += 1
             yield (
-                organ,
-                CustomAdapterNodeType.ORGAN.value,
-                {"name": organ}
+                _id,
+                _type,
+                _props,
             )
+        
+        logger.info(f"Total nodes generated: {node_count}")
+
 
     def get_edges(self):
         """
@@ -90,12 +143,20 @@ class CustomAdapter:
         logger.info("Generating edges.")
 
         for index, row in self._data.iterrows():
+            if row["_type"] not in self.edge_types:
+                continue
+
+            _id = None
+            _start = row["_start"]
+            _end = row["_end"]
+            _type = row["_type"]
+            _props = {}
             yield (
-                None,
-                row["case_study"],
-                row["organ"],
-                CustomAdapterEdgeType.case_study_related_organ.value,
-                {}
+                _id,
+                _start,
+                _end,
+                _type,
+                _props,
             )
 
     def _set_types_and_fields(self, node_types, node_fields, edge_types, edge_fields):
