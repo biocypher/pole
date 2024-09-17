@@ -39,8 +39,8 @@ services:
       NEO4J_dbms_databases_default__to__read__only: "false"
       NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
     ports:
-      - "127.0.0.1:7474:7474"
-      - "127.0.0.1:7687:7687"
+      - "7474:7474"
+      - "7687:7687"
     networks:
       - biochatter
     depends_on:
@@ -69,7 +69,13 @@ services:
 
 volumes:
   biocypher_neo4j_volume:
-
-
+  
 networks:
   biochatter:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: '1380'
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: '1380'
