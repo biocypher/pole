@@ -4,7 +4,7 @@ from pole.adapters.pole_adapter import (
 )
 
 bc = BioCypher(schema_config_path="config/schema_config_vhp.yaml")
-bc.show_ontology_structure(full=True)
+#bc.show_ontology_structure(full=True)
 
 adapter = CustomAdapter()
 bc.write_nodes(adapter.get_nodes())

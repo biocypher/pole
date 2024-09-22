@@ -3,22 +3,18 @@
 CaseStudy: 
   represented_as: node
   input_label: :CaseStudy
-  synonym_for: case
+  is_a: named thing
   properties:
     name: str
     description: str
 
   
 
-organ: 
-
+Organ: 
   represented_as: node 
-
-  input_label: :organ 
+  input_label: :Organ 
   synonym_for: gross anatomical structure 
-
   properties: 
-
     name: str 
 
   
@@ -61,117 +57,63 @@ organ:
 
   
 
-# chemical: 
+Chemical:  
+  represented_as: node 
+  input_label: :Chemical 
+  synonym_for: small molecule
+  properties: 
+    name: str 
+    CAS: str 
+    SMILES: str 
+    InChIKey: str 
+    chemical group: str  
 
-#   synonym_for: stressor, compound 
+Bioassay: 
+  is_a: named thing
+  represented_as: node 
+  input_label: :Bioassay 
+  properties: 
+    name: str 
+    measured: str 
 
-#   represented_as: node 
+Model_system: 
+  is_a: organismal entity 
+  represented_as: node 
+  input_label: :Model_system
+  properties: 
+    name: str 
+    cell type: str 
+    description: str 
 
-#   input_label: chemical 
+Computational_model: 
+  is_a: information content entity 
+  represented_as: node 
+  input_label: :Computational_model
+  properties: 
+    name: str 
+    type: str 
+    language: str 
+    input: str 
+    output: str 
 
-#   properties: 
+Measurable_endpoint: 
+  represented_as: node 
+  is_a: phenomenon
+  input_label: :Measurable_endpoint 
+  properties: 
+    name: str 
+    description: str 
+    type: str   
 
-#     name: str 
-
-#     CAS: str 
-
-#     SMILES: str 
-
-#     InChIKey: str 
-
-#     chemical group: str 
-
-  
-
-# bioassay: 
-
-#   synonym_for: method, measurement, assay 
-
-#   represented_as: node 
-
-#   input_label: bioassay 
-
-#   properties: 
-
-#     name: str 
-
-#     measured: str 
-
-  
-
-# model_system: 
-
-#   synonym_for: model 
-
-#   represented_as: node 
-
-#   input_label: model system 
-
-#   properties: 
-
-#     name: str 
-
-#     cell type: str 
-
-#     description: str 
-
-  
-
-# computational_model: 
-
-#   synonym_for: model 
-
-#   represented_as: node 
-
-#   input_label: computational model 
-
-#   properties: 
-
-#     name: str 
-
-#     type: str 
-
-#     language: str 
-
-#     input: str 
-
-#     output: str 
-
-  
-
-# endpoint: 
-
-#   represented_as: node 
-
-#   input_label: endpoint 
-
-#   properties: 
-
-#     name: str 
-
-#     description: str 
-
-#     type: str 
-
-  
-
-# experimental_condition: 
-
-#   represented_as: node 
-
-#   input_label: experimental condition 
-
-#   properties: 
-
-#     condition_name: str 
-
-#     description: str 
-
-#     temperature: float 
-
-#     humidity: float 
-
-#     exposure_duration: int  # in hours or days 
+experimental_condition: 
+  is_a: study variable
+  represented_as: node 
+  input_label: :Experimental_condition 
+  properties: 
+    exposure_duration: str
+    exposure_concentration: str
+    condition_name: str 
+    description: str 
 
   
 
@@ -227,17 +169,12 @@ case_study_related_organ:
 
   
 
-# chemical_to_bioassay: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: chemical 
-
-#   target: bioassay 
-
-#   input_label: chemical measured with bioassay 
+chemical_measured_with_bioassay: 
+  is_a: association 
+  represented_as: edge 
+  source: Chemical 
+  target: Bioassay 
+  input_label: chemical_measured_with_bioassay
 
   
 
@@ -309,17 +246,12 @@ case_study_related_organ:
 
   
 
-# bioassay_to_model_system: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: bioassay 
-
-#   target: model_system 
-
-#   input_label: bioassay executed on model system 
+bioassay_executed_on_model_system: 
+  is_a: association 
+  represented_as: edge 
+  source: Bioassay 
+  target: Model_system 
+  input_label: bioassay_executed_on_model_system
 
   
 
@@ -351,45 +283,26 @@ case_study_related_organ:
 
   
 
-# case_study_to_chemical: 
+case_study_relevant_chemical: 
+  is_a: association 
+  represented_as: edge 
+  source: CaseStudy 
+  target: Chemical 
+  input_label: case_study_relevant_chemical 
 
-#   is_a: association 
+case_study_relevant_model_system: 
+  is_a: association 
+  represented_as: edge 
+  source: CaseStudy 
+  target: Model_system 
+  input_label: case_study_relevant_model_system 
 
-#   represented_as: edge 
-
-#   source: case_study 
-
-#   target: chemical 
-
-#   input_label: case study relevant chemical 
-
-  
-
-# case_study_to_model_system: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: case_study 
-
-#   target: model_system 
-
-#   input_label: case study relevant model system 
-
-  
-
-# case_study_to_computational_model: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: case_study 
-
-#   target: computational_model 
-
-#   input_label: case study relevant computational model 
+case_study_relevant_computational_model: 
+  is_a: association 
+  represented_as: edge 
+  source: CaseStudy 
+  target: Computational_model 
+  input_label: case_study_relevant_computational_model 
 
   
 
@@ -435,87 +348,47 @@ case_study_related_organ:
 
   
 
-# chemical_to_model_system: 
+chemical_measured_in_model_system: 
+  is_a: association 
+  represented_as: edge 
+  source: Chemical 
+  target: Model_system 
+  input_label: chemical_measured_in_model_system
 
-#   is_a: association 
+chemical_relevant_to_computational_model: 
+  is_a: association 
+  represented_as: edge 
+  source: Chemical 
+  target: Computational_model 
+  input_label: chemical_relevant_to_computational_model
 
-#   represented_as: edge 
+bioassay_related_organ: 
+  is_a: association 
+  represented_as: edge 
+  source: bioassay 
+  target: organ 
+  input_label: bioassay_related_organ
 
-#   source: chemical 
-
-#   target: model_system 
-
-#   input_label: chemical to model system 
-
+model_system_relevant_to_organ: 
+  is_a: association 
+  represented_as: edge 
+  source: Model_system 
+  target: organ 
+  input_label: model_system_relevant_to_organ
   
+computational_model_relevant_to_organ: 
+  is_a: association 
+  represented_as: edge 
+  source: Computational_model 
+  target: organ 
+  input_label: computational_model_relevant_to_organ 
 
-# chemical_to_computational_model: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: chemical 
-
-#   target: computational_model 
-
-#   input_label: chemical to computational model 
-
-  
-
-# bioassay_to_organ: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: bioassay 
-
-#   target: organ 
-
-#   input_label: bioassay related to organ 
-
-  
-
-# model_system_to_organ: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: model_system 
-
-#   target: organ 
-
-#   input_label: model system represents organ 
-
-  
-
-# computational_model_to_organ: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: computational_model 
-
-#   target: organ 
-
-#   input_label: computational model related to organ 
-
-  
-
-# case_study_to_endpoint: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: case_study 
-
-#   target: endpoint 
-
-#   input_label: case study to endpoint 
+case_study_relevant_endpoint: 
+  is_a: association 
+  represented_as: edge 
+  source: CaseStudy 
+  target: Measurable_endpoint 
+  input_label: case_study_relevant_endpoint 
 
   
 
@@ -533,17 +406,12 @@ case_study_related_organ:
 
   
 
-# bioassay_to_experimental_condition: 
-
-#   is_a: association 
-
-#   represented_as: edge 
-
-#   source: bioassay 
-
-#   target: experimental_condition 
-
-#   input_label: bioassay to experimental condition 
+bioassay_used_with_experimental_condition: 
+  is_a: association 
+  represented_as: edge 
+  source: bioassay 
+  target: experimental_condition 
+  input_label: bioassay_used_with_experimental_condition 
 
   
 
