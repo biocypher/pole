@@ -1,0 +1,3 @@
+_id,_labels,exposure_duration,exposure_concentration,condition_name,ExperimentalConditionDescription
+EC_1,:Experimental_condition,24h,50mg/L,High exposure,High dose exposure for 24 hours
+EC_2,:Experimental_condition,48h,10mg/L,Low exposure,Low dose exposure for 48 hours

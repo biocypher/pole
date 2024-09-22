@@ -1,0 +1,3 @@
+_id,_labels,MeasurableEndpointName,MeasurableEndpointDescription,MeasurableEndpointType
+ME_1,:Measurable_endpoint,Cell viability,Measurement of cell survival rate,biological
+ME_2,:Measurable_endpoint,Enzyme activity,Measurement of enzyme catalytic function,biochemical

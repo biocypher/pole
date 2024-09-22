@@ -1,0 +1,3 @@
+_id,_labels,ComputationalModelName,ComputationalModelType,ComputationalModelLanguage,ComputationalModelInput,ComputationalModelOutput,relevant_organ
+CM_1,:Computational_model,SimBio,simulation,Python,data,results,O_1
+CM_2,:Computational_model,NetModel,prediction,R,genes,networks,O_2

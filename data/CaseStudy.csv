@@ -1,0 +1,4 @@
+_id,_labels,CaseStudyName,CaseStudyDescription,related_organ,related_chemical,related_model_system,related_computational_model,related_endpoint
+CS_1,:CaseStudy,Pesticides,Pesticide exposure and its effects,O_1,C_2,MS_1,CM_1,ME_1
+CS_2,:CaseStudy,Pharmacovigilance,Drug safety monitoring,O_2,,MS_2,,
+CS_3,:CaseStudy,Thyroid-mediated neurodevelopmental toxicity,Effects of thyroid disruption,O_1,C_1,,,ME_2

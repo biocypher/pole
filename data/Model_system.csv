@@ -1,0 +1,3 @@
+_id,_labels,ModelSystemName,ModelSystemCellType,ModelSystemDescription,relevant_organ
+MS_1,:Model_system,HeLa,epithelial cell line,Human cervical cancer cell line,O_1
+MS_2,:Model_system,A549,alveolar epithelial cell line,Lung carcinoma cell line,O_2

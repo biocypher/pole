@@ -1,0 +1,3 @@
+_id,_labels,ChemicalName,ChemicalCAS,measured_with_bioassay,SMILES,InChIKey,chemical_group,relevant_computational_model,measured_in_model_system
+C_1,:Chemical,Silichristin,00-22-33,BA_1,smiles1,inchikey1,chemgroup1,CM_1,
+C_2,:Chemical,Rotenone,12-34-56,BA_2,smiles2,inchikey2,chemgroup2,,MS_2

@@ -1,0 +1,41 @@
+_id,_labels,CaseStudyName,CaseStudyDescription,related_organ,related_chemical,related_model_system,related_computational_model,related_endpoint,OrganName,ChemicalName,ChemicalCAS,measured_with_bioassay,SMILES,InChIKey,chemical_group,relevant_computational_model,measured_in_model_system,ModelSystemName,ModelSystemCellType,ModelSystemDescription,relevant_organ,ComputationalModelName,ComputationalModelType,ComputationalModelLanguage,ComputationalModelInput,ComputationalModelOutput,BioassayName,Measured,used_with_experimental_condition,exposure_duration,exposure_concentration,condition_name,ExperimentalConditionDescription,MeasurableEndpointName,MeasurableEndpointDescription,MeasurableEndpointType,_start,_end,_type
+BA_1,:Bioassay,,,O_2,,MS_1,,,,,,,,,,,,,,,,,,,,,Cytotoxicity Assay,Cell viability,ME_2,,,,,,,,,,
+BA_1,,,,,,MS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,MS_1,bioassay_executed_on_model_system
+BA_1,,,,O_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,O_2,bioassay_related_organ
+BA_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,ME_2,bioassay_used_with_experimental_condition
+BA_2,:Bioassay,,,O_4,,MS_2,,,,,,,,,,,,,,,,,,,,,Enzyme Activity Assay,Enzyme concentration,,,,,,,,,,,
+BA_2,,,,,,MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,MS_2,bioassay_executed_on_model_system
+BA_2,,,,O_4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,O_4,bioassay_related_organ
+CM_1,:Computational_model,,,,,,,,,,,,,,,,,,,,O_1,SimBio,simulation,Python,data,results,,,,,,,,,,,,,
+CM_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CM_1,O_1,computational_model_relevant_to_organ
+CM_2,:Computational_model,,,,,,,,,,,,,,,,,,,,O_2,NetModel,prediction,R,genes,networks,,,,,,,,,,,,,
+CM_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CM_2,O_2,computational_model_relevant_to_organ
+CS_1,:CaseStudy,Pesticides,Pesticide exposure and its effects,O_1,C_2,MS_1,CM_1,ME_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,O_1,case_study_related_organ
+CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,C_2,case_study_relevant_chemical
+CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,MS_1,case_study_relevant_model_system
+CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,CM_1,case_study_relevant_computational_model
+CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,ME_1,case_study_relevant_endpoint
+CS_2,:CaseStudy,Pharmacovigilance,Drug safety monitoring,O_2,,MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,O_2,case_study_related_organ
+CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,MS_2,case_study_relevant_model_system
+CS_3,:CaseStudy,Thyroid-mediated neurodevelopmental toxicity,Effects of thyroid disruption,O_1,C_1,,,ME_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,O_1,case_study_related_organ
+CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,C_1,case_study_relevant_chemical
+CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,ME_2,case_study_relevant_endpoint
+C_1,:Chemical,,,,,,,,,Silichristin,00-22-33,BA_1,smiles1,inchikey1,chemgroup1,CM_1,,,,,,,,,,,,,,,,,,,,,,,
+C_1,,,,,,,,,,,,BA_1,,,,,,,,,,,,,,,,,,,,,,,,,C_1,BA_1,chemical_measured_with_bioassay
+C_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_1,CM_1,chemical_relevant_to_computational_model
+C_2,:Chemical,,,,,,,,,Rotenone,12-34-56,BA_2,smiles2,inchikey2,chemgroup2,,MS_2,,,,,,,,,,,,,,,,,,,,,,
+C_2,,,,,,,,,,,,BA_2,,,,,,,,,,,,,,,,,,,,,,,,,C_2,BA_2,chemical_measured_with_bioassay
+C_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_2,MS_2,chemical_measured_in_model_system
+EC_1,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24h,50mg/L,High exposure,High dose exposure for 24 hours,,,,,,
+EC_2,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,48h,10mg/L,Low exposure,Low dose exposure for 48 hours,,,,,,
+ME_1,:Measurable_endpoint,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Cell viability,Measurement of cell survival rate,biological,,,
+ME_2,:Measurable_endpoint,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Enzyme activity,Measurement of enzyme catalytic function,biochemical,,,
+MS_1,:Model_system,,,,,,,,,,,,,,,,,HeLa,epithelial cell line,Human cervical cancer cell line,O_1,,,,,,,,,,,,,,,,,,
+MS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_1,O_1,model_system_relevant_to_organ
+MS_2,:Model_system,,,,,,,,,,,,,,,,,A549,alveolar epithelial cell line,Lung carcinoma cell line,O_2,,,,,,,,,,,,,,,,,,
+MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_2,O_2,model_system_relevant_to_organ
+O_1,:Organ,,,,,,,,brain,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+O_2,:Organ,,,,,,,,kidney,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
