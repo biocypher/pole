@@ -21,6 +21,12 @@ class CompoundWikiAdapterChemicalField(Enum):
     SMILES = "SMILES"                   # New property
     INCHIKEY = "InChIKey"               # New property
 
+class CompoundWikiAdapterEdgeType(Enum):
+    """
+    Define possible edges the adapter can provide.
+    """
+    case_study_related_organ = "case_study_related_organ"
+
 class CompoundWikiAdapter:
     """
     Adapter for creating a knowledge graph
@@ -39,18 +45,18 @@ class CompoundWikiAdapter:
         self._edge_data = self._get_edge_data()
 
         # Print unique _labels and _types for debugging
-        print(f"Unique labels: {self._data['_labels'].unique()}")
-        print(f"Unique types: {self._data['_type'].unique()}")
+        print(f"Unique labels: {self._data['labels'].unique()}")
+        print(f"Unique types: {self._data['type'].unique()}")
 
     def _read_csv(self):
         """
         Read data from CSV file and clean edge type column.
         """
         logger.info("Reading data from CSV file.")
-        data = pd.read_csv("data/CompoundWiki_output.csv", dtype=str)
+        data = pd.read_csv("data/CompoundWiki.csv", dtype=str)
 
         # Clean whitespace from the _type column to avoid issues
-        data["_type"] = data["_type"].str.strip()
+        data["type"] = data["type"].str.strip()
 
         return data
 
@@ -58,13 +64,13 @@ class CompoundWikiAdapter:
         """
         Get all rows that do not have a _type (i.e., nodes).
         """
-        return self._data[self._data["_type"].isnull()]
+        return self._data[self._data["type"].isnull()]
 
     def _get_edge_data(self):
         """
         Get all rows that have a _type (i.e., edges).
         """
-        return self._data[self._data["_type"].notnull()]
+        return self._data[self._data["type"].notnull()]
 
     def get_nodes(self):
         """
@@ -75,8 +81,8 @@ class CompoundWikiAdapter:
 
         node_count = 0
         for index, row in self._node_data.iterrows():
-            _id = row["_id"]
-            _type = row["_labels"]
+            _id = row["id"]
+            _type = row["labels"]
 
             if _type not in self.node_types:
                 logger.info(f"Skipping node with ID={_id} due to type mismatch.")
@@ -104,14 +110,14 @@ class CompoundWikiAdapter:
 
         edge_count = 0
         for index, row in self._edge_data.iterrows():
-            if row["_type"] not in self.edge_types:
-                logger.warning(f"Edge type {row['_type']} not in specified edge types.")
+            if row["type"] not in self.edge_types:
+                logger.warning(f"Edge type {row['type']} not in specified edge types.")
                 continue
 
             _id = None  # Edges don't necessarily need unique IDs
-            _start = row["_start"]
-            _end = row["_end"]
-            _type = row["_type"]
+            _start = row["start"]
+            _end = row["end"]
+            _type = row["type"]
             _props = {}
             logger.info(f"Yielding edge: Start={_start}, End={_end}, Type={_type}, Properties={_props}")
             edge_count += 1
@@ -126,7 +132,7 @@ class CompoundWikiAdapter:
         if node_types:
             self.node_types = [type.value for type in node_types]
         else:
-            self.node_types = [type.value for type in CustomAdapterNodeType]
+            self.node_types = [type.value for type in CompoundWikiAdapterNodeType]
 
         if node_fields:
             self.node_fields = [field.value for field in node_fields]

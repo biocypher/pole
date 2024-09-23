@@ -1,6 +1,9 @@
 from biocypher import BioCypher
 from pole.adapters.pole_adapter import (
-    CustomAdapter,
+    CustomAdapter
+)
+from pole.adapters.vhp_compoundwiki_adapter import (
+    CompoundWikiAdapter
 )
 from pole.adapters.aop_adapter import (
     CustomAOPAdapter,
@@ -14,6 +17,10 @@ bc.write_nodes(adapter.get_nodes())
 bc.write_edges(adapter.get_edges())
 
 adapter = CustomAOPAdapter("data/AOP-Wiki-AOP.csv", "data/AOP-Wiki-KE.csv")
+bc.write_nodes(adapter.get_nodes())
+bc.write_edges(adapter.get_edges())
+
+adapter = CompoundWikiAdapter()
 bc.write_nodes(adapter.get_nodes())
 bc.write_edges(adapter.get_edges())
 
