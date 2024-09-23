@@ -25,6 +25,13 @@ class CustomAdapterAOPField(Enum):
     DESCRIPTION = "AOPDescription"
     SOURCE = "AOPsource"
 
+class CustomAdapterKEField(Enum):
+    """
+    Define possible fields the adapter can provide for Key Event (KE).
+    """
+    NAME = "KEName"  # Field from your CSV
+    ID = "KEID"
+    DESCRIPTION = "KEDescription"
 
 class CustomAdapterEdgeType(Enum):
     """
@@ -41,28 +48,47 @@ class CustomAOPAdapter:
     Adapter for creating a knowledge graph
     """
 
-    def __init__(self, input_file: str):
-        self.input_file = input_file
-        self._node_data, self._edge_data = self._read_and_format_csv()
+    def __init__(self, aop_file: str, ke_file: str):
+        """
+        Initialize with two input files: AOP file and KE file.
+        """
+        self.aop_file = aop_file  # Store AOP file path
+        self.ke_file = ke_file    # Store KE file path
+        self._node_data, self._edge_data = self._read_and_format_aop_csv()  # Read AOP data
+        self._ke_data = self._read_ke_csv()  # Read KE data
 
         # Check if '_labels' column exists, if not, assume a default label
         if '_labels' not in self._node_data.columns:
             logger.warning(f"'_labels' column not found, assigning default label ':AOP' for all nodes.")
-            self._node_data['_labels'] = ':AOP'  # You can modify this default as needed
+            self._node_data['_labels'] = ':AOP'
 
         # Print unique _labels and _types for debugging
         print(f"Unique labels: {self._node_data['_labels'].unique()}")
         print(f"Unique types: {self._edge_data['_type'].unique()}")
 
 
+    def _read_ke_csv(self):
+        """
+        Read Key Event (KE) data from the KE CSV file.
+        """
+        logger.info(f"Reading Key Event (KE) data from {self.ke_file}.")
+        ke_data = pd.read_csv(self.ke_file, dtype=str)
 
-    def _read_and_format_csv(self):
+        # Ensure the necessary columns exist in the KE data
+        if 'KEID' not in ke_data.columns:
+            raise ValueError("KE file must contain 'KEID' column.")
+        
+        # Return the KE data
+        return ke_data
+
+
+    def _read_and_format_aop_csv(self):
         """
         Read and format data from CSV file, adding edges and cleaning types.
         """
-        logger.info(f"Reading and formatting data from {self.input_file}.")
+        logger.info(f"Reading and formatting data from {self.aop_file}.")
 
-        data = pd.read_csv(self.input_file, dtype=str)
+        data = pd.read_csv(self.aop_file, dtype=str)
 
         # Check if _type column exists, if not, handle nodes and edges separately
         if "_type" not in data.columns:
@@ -105,40 +131,37 @@ class CustomAOPAdapter:
         return data, edges
 
 
-    def _get_node_data(self):
-        """
-        Get all rows that do not have a _type (i.e., nodes).
-        """
-        node_data = self._data[0][self._data[0]["_type"].isnull()]
-        return node_data
-
-    def _get_edge_data(self):
-        """
-        Get all rows that have a _type (i.e., edges).
-        """
-        return self._data[1]
-
     def get_nodes(self):
         """
         Returns a generator of node tuples for node types specified in the
-        adapter constructor.
+        adapter constructor, including KE nodes.
         """
         logger.info("Generating nodes.")
-        
-        for index, row in self._node_data.iterrows():
-            _id = row.get("AOPID", None)  # Ensure you're using the correct column for the ID
-            _type = row.get("_labels", ":AOP")  # Use _labels column if available, otherwise default to :AOP
 
-            # Check if properties exist and assign them
+        # First, yield the AOP nodes
+        for index, row in self._node_data.iterrows():
+            _id = row.get("AOPID", None)
+            _type = row.get("_labels", ":AOP")
             _props = {
-                'name': row.get('AOPName', None),  # Ensure the column names match the CSV
+                'name': row.get('AOPName', None),
                 'creator': row.get('AOPcreator', None),
                 'description': row.get('AOPDescription', None),
                 'source': row.get('AOPsource', None)
-            }   
-            
-            logger.info(f"Yielding node: ID={_id}, Type={_type}, Properties={_props}")
+            }
+            logger.info(f"Yielding AOP node: ID={_id}, Type={_type}, Properties={_props}")
             yield (_id, _type, _props)
+
+        # Then, yield the KE nodes
+        for index, row in self._ke_data.iterrows():
+            _id = row.get("KEID", None)
+            _type = ":KeyEvent"  # Default label for Key Event nodes
+            _props = {
+                'name': row.get('KEName', None),
+                'description': row.get('KEDescription', None)
+            }
+            logger.info(f"Yielding KE node: ID={_id}, Type={_type}, Properties={_props}")
+            yield (_id, _type, _props)
+
 
     def get_edges(self):
         """
@@ -157,18 +180,3 @@ class CustomAOPAdapter:
             #logger.info(f"Yielding edge: Start={_start}, End={_end}, Type={_type}, Properties={_props}")
             yield (_id, _start, _end, _type, _props)
 
-    def format_output(self):
-        """
-        Save nodes and edges to output files if needed.
-        """
-        # This function can be extended to save the output as CSV or other formats.
-        pass
-
-
-if __name__ == "__main__":
-    adapter = CustomAOPAdapter("data/AOP-Wiki-AOP.csv")
-    nodes = list(adapter.get_nodes())
-    edges = list(adapter.get_edges())
-
-    # You can save or process nodes and edges as needed here
-    print(f"Generated {len(nodes)} nodes and {len(edges)} edges.")

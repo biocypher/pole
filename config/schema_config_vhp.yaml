@@ -50,7 +50,15 @@ AOP:
     creator: str   # From AOPcreator
     description: str  # From AOPDescription
     source: str
-  
+
+KeyEvent: 
+  represented_as: node 
+  input_label: :KeyEvent  # This defines how the node will be labeled in your graph
+  is_a: named thing
+  properties: 
+    name: str          # Represents the name of the key event
+    KEID: str            # Represents the ID of the key event
+    description: str 
 
 # key_event: 
 

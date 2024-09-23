@@ -1,10 +1,13 @@
-_id,_labels,CaseStudy,organ,_start,_end,_type,rel_type
-1,:CaseStudy,Pesticides,,,,,
-2,:organ,,brain,,,,
-3,:CaseStudy,Pharmacovigilance,,,,,
-4,:organ,,kidney,,,,
-5,:CaseStudy,Thyroid-mediated neurodevelopmental toxicity,,,,,
-6,:organ,,brain,,,,
-,,,,"1","2",case_study_related_organ
-,,,,"3","4",case_study_related_organ
-,,,,"5","6",case_study_related_organ
+_id,_labels,CaseStudyName,OrganName,ChemicalName,ChemicalCAS,_start,_end,_type
+1,:CaseStudy,Pesticides,,,,,,
+2,:Organ,,brain,,,,,
+3,:CaseStudy,Pharmacovigilance,,,,,,
+4,:Organ,,kidney,,,,,
+5,:CaseStudy,Thyroid-mediated neurodevelopmental toxicity,,,,,,
+6,:Chemical,,,Silichristin,00-22-33,,,
+7,:Chemical,,,Rotenone,12-34-56,,,
+,,,,,,1,2,case_study_related_organ
+,,,,,,3,4,case_study_related_organ
+,,,,,,5,2,case_study_related_organ
+,,,,,,1,7,case_study_relevant_chemical
+,,,,,,5,6,case_study_relevant_chemical
