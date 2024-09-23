@@ -1,0 +1,10 @@
+PREFIX wd: <https://compoundcloud.wikibase.cloud/entity/>
+PREFIX wdt: <https://compoundcloud.wikibase.cloud/prop/direct/>
+
+SELECT (STR(?url) AS ?id) ?labels ?type WHERE {
+  ?cmp wdt:P1 wd:Q2 .
+  {
+    ?cmp wdt:P4 ?url .
+  }
+  BIND (":WebPage" AS ?labels)
+}
