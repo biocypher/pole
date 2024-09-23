@@ -2,11 +2,18 @@ from biocypher import BioCypher
 from pole.adapters.pole_adapter import (
     CustomAdapter,
 )
+from pole.adapters.aop_adapter import (
+    CustomAOPAdapter,
+)
 
 bc = BioCypher(schema_config_path="config/schema_config_vhp.yaml")
 #bc.show_ontology_structure(full=True)
 
 adapter = CustomAdapter()
+bc.write_nodes(adapter.get_nodes())
+bc.write_edges(adapter.get_edges())
+
+adapter = CustomAOPAdapter("data/AOP-Wiki-AOP.csv")
 bc.write_nodes(adapter.get_nodes())
 bc.write_edges(adapter.get_edges())
 

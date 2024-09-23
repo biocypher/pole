@@ -13,7 +13,7 @@ CaseStudy:
 Organ: 
   represented_as: node 
   input_label: :Organ 
-  synonym_for: gross anatomical structure 
+  is_a: gross anatomical structure 
   properties: 
     name: str 
 
@@ -35,6 +35,16 @@ Organ:
 
 #     author: str 
 
+AOP: 
+  represented_as: node 
+  input_label: :AOP
+  is_a: named thing
+  properties: 
+    aop_name: str      # From AOPName
+    aop_id: str        # From AOPID
+    aop_creator: str   # From AOPcreator
+    aop_description: str  # From AOPDescription
+    aop_source: str
   
 
 # key_event: 
@@ -139,7 +149,34 @@ case_study_related_organ:
   target: organ 
   input_label: case_study_related_organ
 
-  
+
+AOP_includes_mie:  # Links to MIE node
+  is_a: association 
+  represented_as: edge
+  source: AOP
+  target: KeyEvent
+  input_label: AOP_includes_mie
+    
+AOP_includes_ao:  # Links to AO node
+  is_a: association 
+  represented_as: edge
+  source: AOP
+  target: KeyEvent
+  input_label: AOP_includes_ao
+
+AOP_includes_key_event:  # Links to AOPKE (Key Event) node
+  is_a: association 
+  represented_as: edge
+  source: AOP
+  target: KeyEvent  # Assumes AOPKE points to a KeyEvent node
+  input_label: AOP_includes_key_event
+
+AOP_relevant_stressor:  # Links to AOPStressor (stressor node)
+  is_a: association 
+  represented_as: edge
+  source: AOP
+  target: Stressor  # Assumes AOPStressor points to a Stressor node
+  input_label: AOP_relevant_stressor
 
 # case_study_to_adverse_outcome_pathway: 
 
