@@ -11,6 +11,7 @@ class CompoundWikiAdapterNodeType(Enum):
     Define types of nodes the adapter can provide.
     """
     CHEMICAL = ":Chemical"
+    WEBPAGE = ":WebPage"
 
 class CompoundWikiAdapterChemicalField(Enum):
     """
@@ -20,7 +21,6 @@ class CompoundWikiAdapterChemicalField(Enum):
     CAS = "ChemicalCAS"
     SMILES = "SMILES"                   # New property
     INCHIKEY = "InChIKey"               # New property
-    WEBPAGE = "WebPage"               # New property
 
 class CompoundWikiAdapterEdgeType(Enum):
     """
