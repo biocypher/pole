@@ -17,7 +17,12 @@ Organ:
   properties: 
     name: str 
 
-  
+web page:
+  represented_as: node
+  input_label: :WebPage
+  synonym: web page
+  properties:
+    name: str
 
 # adverse_outcome_pathway: 
 
