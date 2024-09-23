@@ -491,3 +491,11 @@ bioassay_used_with_experimental_condition:
 #   target: data 
 
 #   input_label: computational model to data 
+
+chemical webpage:
+  is_a: association
+  represented_as: edge
+  source: Chemical
+  target: web page
+  input_label: chemical_webpage
+
