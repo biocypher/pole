@@ -145,7 +145,7 @@ class CustomAOPAdapter:
             _props = {
                 'name': row.get('AOPName', None),
                 'creator': row.get('AOPcreator', None),
-                'description': row.get('AOPDescription', None),
+                #'description': row.get('AOPDescription', None),
                 'source': row.get('AOPsource', None)
             }
             logger.info(f"Yielding AOP node: ID={_id}, Type={_type}, Properties={_props}")
@@ -157,7 +157,7 @@ class CustomAOPAdapter:
             _type = ":KeyEvent"  # Default label for Key Event nodes
             _props = {
                 'name': row.get('KEName', None),
-                'description': row.get('KEDescription', None)
+                #'description': row.get('KEDescription', None)
             }
             logger.info(f"Yielding KE node: ID={_id}, Type={_type}, Properties={_props}")
             yield (_id, _type, _props)
