@@ -19,6 +19,7 @@ Organ:
 
 web page:
   represented_as: node
+  is_a: named thing
   input_label: :WebPage
   synonym: web page
   properties:
