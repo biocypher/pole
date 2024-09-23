@@ -126,17 +126,17 @@ class CustomAOPAdapter:
         logger.info("Generating nodes.")
         
         for index, row in self._node_data.iterrows():
-            _id = row["AOPID"]
-            _type = ":AOP"
+            _id = row.get("AOPID", None)  # Ensure you're using the correct column for the ID
+            _type = row.get("_labels", ":AOP")  # Use _labels column if available, otherwise default to :AOP
 
-            # Gather properties for each node
+            # Check if properties exist and assign them
             _props = {
-                'name': row.get('AOPName', None),
+                'name': row.get('AOPName', None),  # Ensure the column names match the CSV
                 'creator': row.get('AOPcreator', None),
                 'description': row.get('AOPDescription', None),
                 'source': row.get('AOPsource', None)
-            }
-
+            }   
+            
             logger.info(f"Yielding node: ID={_id}, Type={_type}, Properties={_props}")
             yield (_id, _type, _props)
 
@@ -154,7 +154,7 @@ class CustomAOPAdapter:
             _type = row["_type"]
             _props = {}
 
-            logger.info(f"Yielding edge: Start={_start}, End={_end}, Type={_type}, Properties={_props}")
+            #logger.info(f"Yielding edge: Start={_start}, End={_end}, Type={_type}, Properties={_props}")
             yield (_id, _start, _end, _type, _props)
 
     def format_output(self):

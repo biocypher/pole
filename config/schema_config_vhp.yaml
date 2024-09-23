@@ -40,11 +40,11 @@ AOP:
   input_label: :AOP
   is_a: named thing
   properties: 
-    aop_name: str      # From AOPName
-    aop_id: str        # From AOPID
-    aop_creator: str   # From AOPcreator
-    aop_description: str  # From AOPDescription
-    aop_source: str
+    name: str      # From AOPName
+    id: str        # From AOPID
+    creator: str   # From AOPcreator
+    description: str  # From AOPDescription
+    source: str
   
 
 # key_event: 
