@@ -1,7 +1,7 @@
 PREFIX wd: <https://compoundcloud.wikibase.cloud/entity/>
 PREFIX wdt: <https://compoundcloud.wikibase.cloud/prop/direct/>
 
-SELECT (SUBSTR(STR(?cmp), 45) AS ?id) ?labels ?ChemicalName ?ChemicalCAS ?SMILES ?InChIKey WHERE {
+SELECT (SUBSTR(STR(?cmp), 45) AS ?id) ?labels ?ChemicalName ?ChemicalCAS ?SMILES ?InChIKey ?type WHERE {
   ?cmp wdt:P1 wd:Q2 ;
        wdt:P7 ?SMILES ;
        wdt:P10 ?InChIKey .
