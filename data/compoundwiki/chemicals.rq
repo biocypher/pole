@@ -1,0 +1,14 @@
+PREFIX wd: <https://compoundcloud.wikibase.cloud/entity/>
+PREFIX wdt: <https://compoundcloud.wikibase.cloud/prop/direct/>
+
+SELECT (SUBSTR(STR(?cmp), 45) AS ?id) ?labels ?ChemicalName ?ChemicalCAS ?SMILES ?InChIKey WHERE {
+  ?cmp wdt:P1 wd:Q2 ;
+       wdt:P7 ?SMILES ;
+       wdt:P10 ?InChIKey .
+  OPTIONAL { ?cmp wdt:P23 ?ChemicalCAS }
+  OPTIONAL {
+    ?cmp rdfs:label ?ChemicalName .
+    FILTER (LANG(?ChemicalName) = "en")
+  }
+  BIND (":Chemical" AS ?labels)
+}
