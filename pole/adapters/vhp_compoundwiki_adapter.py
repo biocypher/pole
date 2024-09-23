@@ -52,6 +52,7 @@ class CompoundWikiAdapter:
 
         node_count = 0
         data = pd.read_csv("data/CompoundWiki.csv", dtype=str)
+        data = data.map(lambda x: x.replace("'", "") if isinstance(x, str) else x) #FIXME
         for index, row in data.iterrows():
             _id = row["id"]
             _type = row["labels"]
