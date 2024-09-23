@@ -20,12 +20,13 @@ class CompoundWikiAdapterChemicalField(Enum):
     CAS = "ChemicalCAS"
     SMILES = "SMILES"                   # New property
     INCHIKEY = "InChIKey"               # New property
+    WEBPAGE = "WebPage"               # New property
 
 class CompoundWikiAdapterEdgeType(Enum):
     """
     Define possible edges the adapter can provide.
     """
-    case_study_related_organ = "case_study_related_organ"
+    chemical_webpage = "chemical_webpage"
 
 class CompoundWikiAdapter:
     """
@@ -40,47 +41,18 @@ class CompoundWikiAdapter:
         edge_fields: Optional[list] = None,
     ):
         self._set_types_and_fields(node_types, node_fields, edge_types, edge_fields)
-        self._data = self._read_csv()
-        self._node_data = self._get_node_data()
-        self._edge_data = self._get_edge_data()
-
-        # Print unique _labels and _types for debugging
-        print(f"Unique labels: {self._data['labels'].unique()}")
-        print(f"Unique types: {self._data['type'].unique()}")
-
-    def _read_csv(self):
-        """
-        Read data from CSV file and clean edge type column.
-        """
-        logger.info("Reading data from CSV file.")
-        data = pd.read_csv("data/CompoundWiki.csv", dtype=str)
-
-        # Clean whitespace from the _type column to avoid issues
-        data["type"] = data["type"].str.strip()
-
-        return data
-
-    def _get_node_data(self):
-        """
-        Get all rows that do not have a _type (i.e., nodes).
-        """
-        return self._data[self._data["type"].isnull()]
-
-    def _get_edge_data(self):
-        """
-        Get all rows that have a _type (i.e., edges).
-        """
-        return self._data[self._data["type"].notnull()]
 
     def get_nodes(self):
         """
         Returns a generator of node tuples for node types specified in the
         adapter constructor.
         """
+
         logger.info("Generating nodes.")
 
         node_count = 0
-        for index, row in self._node_data.iterrows():
+        data = pd.read_csv("data/CompoundWiki.csv", dtype=str)
+        for index, row in data.iterrows():
             _id = row["id"]
             _type = row["labels"]
 
@@ -99,6 +71,23 @@ class CompoundWikiAdapter:
             node_count += 1
             yield (_id, _type, _props)
 
+        data = pd.read_csv("data/CompoundWiki_webpages.csv", dtype=str)
+        for index, row in data.iterrows():
+            _id = row["id"]
+            _type = row["labels"]
+
+            if _type not in self.node_types:
+                logger.info(f"Skipping node with ID={_id} due to type mismatch.")
+                continue
+
+            _props = {}
+            if _type == ':WebPage':
+                _props['URL'] = _id
+
+            logger.info(f"Yielding node: ID={_id}, Type={_type}, Properties={_props}")
+            node_count += 1
+            yield (_id, _type, _props)
+
         logger.info(f"Total nodes generated: {node_count}")
 
     def get_edges(self):
@@ -109,7 +98,8 @@ class CompoundWikiAdapter:
         logger.info("Generating edges.")
 
         edge_count = 0
-        for index, row in self._edge_data.iterrows():
+        data = pd.read_csv("data/CompoundWiki_edges.csv", dtype=str)
+        for index, row in data.iterrows():
             if row["type"] not in self.edge_types:
                 logger.warning(f"Edge type {row['type']} not in specified edge types.")
                 continue

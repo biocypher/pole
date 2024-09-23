@@ -1,24 +1,24 @@
 start,end,type
-Q1,https://wiki.toxbank.net/wiki/Aflatoxin_B1,web page
-Q9,https://wiki.toxbank.net/wiki/Allyl_alcohol,web page
-Q17,https://wiki.toxbank.net/wiki/Amiodarone,web page
-Q18,https://wiki.toxbank.net/wiki/Beta-Naphthoflavone,web page
-Q19,https://wiki.toxbank.net/wiki/Bosentan,web page
-Q20,https://wiki.toxbank.net/wiki/CCl4,web page
-Q21,https://wiki.toxbank.net/wiki/Chlorpromazine,web page
-Q29,https://wiki.toxbank.net/wiki/Acetaminophen,web page
-Q30,https://wiki.toxbank.net/wiki/Dimethoxy-naphthoquinone_(DMNQ),web page
-Q31,https://wiki.toxbank.net/wiki/Dirlotapide,web page
-Q34,https://wiki.toxbank.net/wiki/Iodoacetamide,web page
-Q35,https://wiki.toxbank.net/wiki/Methotrexate,web page
-Q37,https://wiki.toxbank.net/wiki/Rifampicin,web page
-Q38,https://wiki.toxbank.net/wiki/Rotenone,web page
-Q39,https://wiki.toxbank.net/wiki/TO901317,web page
-Q40,https://wiki.toxbank.net/wiki/Tamoxifen,web page
-Q41,https://wiki.toxbank.net/wiki/Valproic_Acid,web page
-Q45,https://wiki.toxbank.net/wiki/Carbachol,web page
-Q46,https://wiki.toxbank.net/wiki/Doxorubicin,web page
-Q47,https://wiki.toxbank.net/wiki/E-4031,web page
-Q48,https://wiki.toxbank.net/wiki/Potassium_Bromate,web page
-Q49,https://wiki.toxbank.net/wiki/Ochratoxin_A,web page
-Q2058,http://wiki.toxbank.net/wiki/Cyclosporin_A,web page
+Q1,https://wiki.toxbank.net/wiki/Aflatoxin_B1,chemical_webpage
+Q9,https://wiki.toxbank.net/wiki/Allyl_alcohol,chemical_webpage
+Q17,https://wiki.toxbank.net/wiki/Amiodarone,chemical_webpage
+Q18,https://wiki.toxbank.net/wiki/Beta-Naphthoflavone,chemical_webpage
+Q19,https://wiki.toxbank.net/wiki/Bosentan,chemical_webpage
+Q20,https://wiki.toxbank.net/wiki/CCl4,chemical_webpage
+Q21,https://wiki.toxbank.net/wiki/Chlorpromazine,chemical_webpage
+Q29,https://wiki.toxbank.net/wiki/Acetaminophen,chemical_webpage
+Q30,https://wiki.toxbank.net/wiki/Dimethoxy-naphthoquinone_(DMNQ),chemical_webpage
+Q31,https://wiki.toxbank.net/wiki/Dirlotapide,chemical_webpage
+Q34,https://wiki.toxbank.net/wiki/Iodoacetamide,chemical_webpage
+Q35,https://wiki.toxbank.net/wiki/Methotrexate,chemical_webpage
+Q37,https://wiki.toxbank.net/wiki/Rifampicin,chemical_webpage
+Q38,https://wiki.toxbank.net/wiki/Rotenone,chemical_webpage
+Q39,https://wiki.toxbank.net/wiki/TO901317,chemical_webpage
+Q40,https://wiki.toxbank.net/wiki/Tamoxifen,chemical_webpage
+Q41,https://wiki.toxbank.net/wiki/Valproic_Acid,chemical_webpage
+Q45,https://wiki.toxbank.net/wiki/Carbachol,chemical_webpage
+Q46,https://wiki.toxbank.net/wiki/Doxorubicin,chemical_webpage
+Q47,https://wiki.toxbank.net/wiki/E-4031,chemical_webpage
+Q48,https://wiki.toxbank.net/wiki/Potassium_Bromate,chemical_webpage
+Q49,https://wiki.toxbank.net/wiki/Ochratoxin_A,chemical_webpage
+Q2058,http://wiki.toxbank.net/wiki/Cyclosporin_A,chemical_webpage

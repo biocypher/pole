@@ -6,5 +6,5 @@ SELECT (SUBSTR(STR(?cmp), 45) AS ?start) (STR(?url) AS ?end) ?type WHERE {
   {
     ?cmp wdt:P4 ?url .
   }
-  BIND ("web page" AS ?type)
+  BIND ("chemical_webpage" AS ?type)
 }
