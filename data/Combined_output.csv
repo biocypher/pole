@@ -1,41 +1,106 @@
-_id,_labels,CaseStudyName,CaseStudyDescription,related_organ,related_chemical,related_model_system,related_computational_model,related_endpoint,OrganName,ChemicalName,ChemicalCAS,measured_with_bioassay,SMILES,InChIKey,chemical_group,relevant_computational_model,measured_in_model_system,ModelSystemName,ModelSystemCellType,ModelSystemDescription,relevant_organ,ComputationalModelName,ComputationalModelType,ComputationalModelLanguage,ComputationalModelInput,ComputationalModelOutput,BioassayName,Measured,used_with_experimental_condition,exposure_duration,exposure_concentration,condition_name,ExperimentalConditionDescription,MeasurableEndpointName,MeasurableEndpointDescription,MeasurableEndpointType,_start,_end,_type
-BA_1,:Bioassay,,,O_2,,MS_1,,,,,,,,,,,,,,,,,,,,,Cytotoxicity Assay,Cell viability,ME_2,,,,,,,,,,
-BA_1,,,,,,MS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,MS_1,bioassay_executed_on_model_system
-BA_1,,,,O_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,O_2,bioassay_related_organ
-BA_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,ME_2,bioassay_used_with_experimental_condition
-BA_2,:Bioassay,,,O_4,,MS_2,,,,,,,,,,,,,,,,,,,,,Enzyme Activity Assay,Enzyme concentration,,,,,,,,,,,
-BA_2,,,,,,MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,MS_2,bioassay_executed_on_model_system
-BA_2,,,,O_4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,O_4,bioassay_related_organ
-CM_1,:Computational_model,,,,,,,,,,,,,,,,,,,,O_1,SimBio,simulation,Python,data,results,,,,,,,,,,,,,
-CM_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CM_1,O_1,computational_model_relevant_to_organ
-CM_2,:Computational_model,,,,,,,,,,,,,,,,,,,,O_2,NetModel,prediction,R,genes,networks,,,,,,,,,,,,,
-CM_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CM_2,O_2,computational_model_relevant_to_organ
-CS_1,:CaseStudy,Pesticides,Pesticide exposure and its effects,O_1,C_2,MS_1,CM_1,ME_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,O_1,case_study_related_organ
-CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,C_2,case_study_relevant_chemical
-CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,MS_1,case_study_relevant_model_system
-CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,CM_1,case_study_relevant_computational_model
-CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,ME_1,case_study_relevant_endpoint
-CS_2,:CaseStudy,Pharmacovigilance,Drug safety monitoring,O_2,,MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,O_2,case_study_related_organ
-CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,MS_2,case_study_relevant_model_system
-CS_3,:CaseStudy,Thyroid-mediated neurodevelopmental toxicity,Effects of thyroid disruption,O_1,C_1,,,ME_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,O_1,case_study_related_organ
-CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,C_1,case_study_relevant_chemical
-CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,ME_2,case_study_relevant_endpoint
-C_1,:Chemical,,,,,,,,,Silichristin,00-22-33,BA_1,smiles1,inchikey1,chemgroup1,CM_1,,,,,,,,,,,,,,,,,,,,,,,
-C_1,,,,,,,,,,,,BA_1,,,,,,,,,,,,,,,,,,,,,,,,,C_1,BA_1,chemical_measured_with_bioassay
-C_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_1,CM_1,chemical_relevant_to_computational_model
-C_2,:Chemical,,,,,,,,,Rotenone,12-34-56,BA_2,smiles2,inchikey2,chemgroup2,,MS_2,,,,,,,,,,,,,,,,,,,,,,
-C_2,,,,,,,,,,,,BA_2,,,,,,,,,,,,,,,,,,,,,,,,,C_2,BA_2,chemical_measured_with_bioassay
-C_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_2,MS_2,chemical_measured_in_model_system
-EC_1,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24h,50mg/L,High exposure,High dose exposure for 24 hours,,,,,,
-EC_2,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,48h,10mg/L,Low exposure,Low dose exposure for 48 hours,,,,,,
-ME_1,:Measurable_endpoint,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Cell viability,Measurement of cell survival rate,biological,,,
-ME_2,:Measurable_endpoint,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Enzyme activity,Measurement of enzyme catalytic function,biochemical,,,
-MS_1,:Model_system,,,,,,,,,,,,,,,,,HeLa,epithelial cell line,Human cervical cancer cell line,O_1,,,,,,,,,,,,,,,,,,
-MS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_1,O_1,model_system_relevant_to_organ
-MS_2,:Model_system,,,,,,,,,,,,,,,,,A549,alveolar epithelial cell line,Lung carcinoma cell line,O_2,,,,,,,,,,,,,,,,,,
-MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_2,O_2,model_system_relevant_to_organ
-O_1,:Organ,,,,,,,,brain,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-O_2,:Organ,,,,,,,,kidney,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+_id,_labels,CaseStudyName,CaseStudyDescription,related_organ,related_chemical,related_model_system,related_computational_model,related_endpoint,Related endpoint of bioassay? Als de node van kolom I wordt weggehaald,OrganName,ChemicalName,ChemicalCAS,measured_with_bioassay,SMILES,InChIKey,chemical_group,relevant_computational_model,measured_in_model_system,experimenten condition toevoegen (zodat het linkt aan de goede experimenten en concentraties),ModelSystemName,ModelSystemCellType,ModelSystemDescription,relevant_organ,ComputationalModelName,ComputationalModelType,ComputationalModelLanguage,ComputationalModelInput,ComputationalModelOutput,BioassayName,Measured,used_with_experimental_condition,Linken naar measured endpoint (lijkt duplicaat te zijn,"kolom toevoegen met ' uitkomstmaat': bijv uitgedrukt in % viability, % metabolites, etc. ",exposure_duration,exposure_concentration,condition_name,ExperimentalConditionDescription,MeasurableEndpointName,MeasurableEndpointDescription,MeasurableEndpointType,_start,_end,_type
+BA_1,:Bioassay,,,"O_1,O_3",,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,Alamar blue assay,Mitochondrial metabolic activity,"EC_1, EC_2",,,,,,,,,,,,
+BA_1,,,,,,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,"MS_1, MS_2, MS_4",bioassay_executed_on_model_system
+BA_1,,,,"O_1,O_3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,"O_1,O_3",bioassay_related_organ
+BA_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_1,"EC_1, EC_2",bioassay_used_with_experimental_condition
+BA_10,:Bioassay,,,O_1,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,Thyroid hormone receptor activation,Gene expression of KLF9,"EC_7, EC_12",,,,,,,,,,,,
+BA_10,,,,,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_10,"MS_5, MS_6, MS_7 ",bioassay_executed_on_model_system
+BA_10,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_10,O_1,bioassay_related_organ
+BA_10,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_10,"EC_7, EC_12",bioassay_used_with_experimental_condition
+BA_11,:Bioassay,,,O_1,,MS_3,,,,,,,,,,,,,,,,,,,,,,,Characterization dopaminergic markers,Gene expression of dopaminergic markers,,,,,,,,,,,,,
+BA_11,,,,,,MS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_11,MS_3,bioassay_executed_on_model_system
+BA_11,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_11,O_1,bioassay_related_organ
+BA_12,:Bioassay,,,O_1,,MS_3,,,,,,,,,,,,,,,,,,,,,,,FACS dopaminergic markers,Survival dopaminergic neurons,,,,,,,,,,,,,
+BA_12,,,,,,MS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_12,MS_3,bioassay_executed_on_model_system
+BA_12,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_12,O_1,bioassay_related_organ
+BA_2,:Bioassay,,,"O_1,O_3",,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,Lactate dehydrogenase assay,Damage to the plasma membrane,EC_1,,,,,,,,,,,,
+BA_2,,,,,,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,"MS_1, MS_2, MS_4",bioassay_executed_on_model_system
+BA_2,,,,"O_1,O_3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,"O_1,O_3",bioassay_related_organ
+BA_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_2,EC_1,bioassay_used_with_experimental_condition
+BA_3,:Bioassay,,,O_1,,MS_2,,,,,,,,,,,,,,,,,,,,,,,carboxy- fluorescein diacetate assay,Cytotoxicity,EC_2,,,,,,,,,,,,
+BA_3,,,,,,MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_3,MS_2,bioassay_executed_on_model_system
+BA_3,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_3,O_1,bioassay_related_organ
+BA_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_3,EC_2,bioassay_used_with_experimental_condition
+BA_4,:Bioassay,,,O_1,,MS_2,,,,,,,,,,,,,,,,,,,,,,,H2-DCFDA assay,Reactive oxygen species production,EC_2,,,,,,,,,,,,
+BA_4,,,,,,MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_4,MS_2,bioassay_executed_on_model_system
+BA_4,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_4,O_1,bioassay_related_organ
+BA_4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_4,EC_2,bioassay_used_with_experimental_condition
+BA_5,:Bioassay,,,O_1,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,MTT assay,Cell viability and proliferation,"EC_3, EC_8",,,,,,,,,,,,
+BA_5,,,,,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_5,"MS_5, MS_6, MS_7 ",bioassay_executed_on_model_system
+BA_5,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_5,O_1,bioassay_related_organ
+BA_5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_5,"EC_3, EC_8",bioassay_used_with_experimental_condition
+BA_6,:Bioassay,,,O_1,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,Thyroid Hormone Transport assay,Uptake and accumulation of thyroid hormones T3 and T4,"EC_4, EC_9",,,,,,,,,,,,
+BA_6,,,,,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_6,"MS_5, MS_6, MS_7 ",bioassay_executed_on_model_system
+BA_6,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_6,O_1,bioassay_related_organ
+BA_6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_6,"EC_4, EC_9",bioassay_used_with_experimental_condition
+BA_7,:Bioassay,,,O_1,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,Deiodination D2 assay,Conversion of T4 into T3 using cell lysate,"EC_5, EC_10",,,,,,,,,,,,
+BA_7,,,,,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_7,"MS_5, MS_6, MS_7 ",bioassay_executed_on_model_system
+BA_7,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_7,O_1,bioassay_related_organ
+BA_7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_7,"EC_5, EC_10",bioassay_used_with_experimental_condition
+BA_8,:Bioassay,,,O_1,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,Deiodination D3 assay,Conversion of T3 into T2 using cell lysate,"EC_5, EC_10",,,,,,,,,,,,
+BA_8,,,,,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_8,"MS_5, MS_6, MS_7 ",bioassay_executed_on_model_system
+BA_8,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_8,O_1,bioassay_related_organ
+BA_8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_8,"EC_5, EC_10",bioassay_used_with_experimental_condition
+BA_9,:Bioassay,,,O_1,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,Metabolism assay,Conversion of T3 into T2 in whole cells,"EC_6, EC_11",,,,,,,,,,,,
+BA_9,,,,,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_9,"MS_5, MS_6, MS_7 ",bioassay_executed_on_model_system
+BA_9,,,,O_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_9,O_1,bioassay_related_organ
+BA_9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BA_9,"EC_6, EC_11",bioassay_used_with_experimental_condition
+CS_1,:CaseStudy,Kidney,,O_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_1,O_2,case_study_related_organ
+CS_2,:CaseStudy,Neurodegeneration,Life-long exposure to pesticides and neurodegenerative effects,O_1,"C_1, C_2, C_3, C_4","MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,O_1,case_study_related_organ
+CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,"C_1, C_2, C_3, C_4",case_study_relevant_chemical
+CS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_2,"MS_1, MS_2, MS_4",case_study_relevant_model_system
+CS_3,:CaseStudy,Thyroid hormone and brain development,We measure the effect of chemicals via the pertubation of thyroid hormone homeostasis in the developing brain,O_1,"C_5, C_6","MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,O_1,case_study_related_organ
+CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,"C_5, C_6",case_study_relevant_chemical
+CS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,CS_3,"MS_5, MS_6, MS_7 ",case_study_relevant_model_system
+C_1,:Chemical,,,,,,,,,,Dinoseb,88-85-7,"BA_1, BA_2, BA_3, BA_4",CCC(C)C1=C(C(=CC(=C1)[N+](=O)[O-])[N+](=O)[O-])O,OWZPCEFYPSAJFR-UHFFFAOYSA-N,Pesticide,,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,
+C_1,,,,,,,,,,,,,"BA_1, BA_2, BA_3, BA_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,C_1,"BA_1, BA_2, BA_3, BA_4",chemical_measured_with_bioassay
+C_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_1,"MS_1, MS_2, MS_4",chemical_measured_in_model_system
+C_2,:Chemical,,,,,,,,,,Endosulfan,115-29-7,"BA_1, BA_2, BA_3, BA_4",C1C2C(COS(=O)O1)C3(C(=C(C2(C3(Cl)Cl)Cl)Cl)Cl)Cl,RDYMFSUJUZBWLH-UHFFFAOYSA-N,Pesticide,,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,
+C_2,,,,,,,,,,,,,"BA_1, BA_2, BA_3, BA_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,C_2,"BA_1, BA_2, BA_3, BA_4",chemical_measured_with_bioassay
+C_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_2,"MS_1, MS_2, MS_4",chemical_measured_in_model_system
+C_3,:Chemical,,,,,,,,,,Mancozeb,8018-01-7,"BA_1, BA_2, BA_3, BA_4",C(CNC(=S)[S-])NC(=S)[S-].C(CNC(=S)[S-])NC(=S)[S-].[Mn+2].[Zn+2],CHNQZRKUZPNOOH-UHFFFAOYSA-J,Pesticide,,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,
+C_3,,,,,,,,,,,,,"BA_1, BA_2, BA_3, BA_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,C_3,"BA_1, BA_2, BA_3, BA_4",chemical_measured_with_bioassay
+C_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_3,"MS_1, MS_2, MS_4",chemical_measured_in_model_system
+C_4,:Chemical,,,,,,,,,,Rotenone,83-79-4,"BA_1, BA_2, BA_3, BA_4",CC(=C)C1CC2=C(O1)C=CC3=C2OC4COC5=CC(=C(C=C5C4C3=O)OC)OC,JUVIOZPCNVVQFO-HBGVWJBISA-N,Pesticide,,"MS_1, MS_2, MS_4",,,,,,,,,,,,,,,,,,,,,,,,,
+C_4,,,,,,,,,,,,,"BA_1, BA_2, BA_3, BA_4",,,,,,,,,,,,,,,,,,,,,,,,,,,,C_4,"BA_1, BA_2, BA_3, BA_4",chemical_measured_with_bioassay
+C_4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_4,"MS_1, MS_2, MS_4",chemical_measured_in_model_system
+C_5,:Chemical,,,,,,,,,,Silychristin,33889-69-9,"BA_5, BA_6, BA_8, BA_9, BA_10",COc1cc(ccc1O)[C@@H]2Oc3c(O)cc(cc3[C@H]2CO)[C@H]4Oc5cc(O)cc(O)c5C(=O)[C@@H]4O,BMLIIPOXVWESJG-LMBCONBSSA-N,Flavonolignan,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,
+C_5,,,,,,,,,,,,,"BA_5, BA_6, BA_8, BA_9, BA_10",,,,,,,,,,,,,,,,,,,,,,,,,,,,C_5,"BA_5, BA_6, BA_8, BA_9, BA_10",chemical_measured_with_bioassay
+C_5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_5,"MS_5, MS_6, MS_7 ",chemical_measured_in_model_system
+C_6,:Chemical,,,,,,,,,,TBBPA,79-94-7,"BA_5, BA_6, BA_8, BA_9, BA_10",CC(C)(c1cc(Br)c(O)c(Br)c1)c2cc(Br)c(O)c(Br)c2,VEORPZCZECFIRK-UHFFFAOYSA-N,brominated flame retardant,,"MS_5, MS_6, MS_7 ",,,,,,,,,,,,,,,,,,,,,,,,,
+C_6,,,,,,,,,,,,,"BA_5, BA_6, BA_8, BA_9, BA_10",,,,,,,,,,,,,,,,,,,,,,,,,,,,C_6,"BA_5, BA_6, BA_8, BA_9, BA_10",chemical_measured_with_bioassay
+C_6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,C_6,"MS_5, MS_6, MS_7 ",chemical_measured_in_model_system
+EC_1,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"24 hours, 24 hours with 18 hours recovery, 24 hours with 72 hours recovery,  four times six hours divided over four days, 96 hours","0.1 micromolar, 0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar, 30 micromolar, 100 micromolar",Exposure condition SH-SY5Y,"Model system is exposed to the compound for 24 hours, 24 hours with 18 hours recovery, 24 hours with 72 hours recovery, four times 6 hours divided over four days, or 96 hours with a concentration of 0.1 micromolar, 0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar, 30 micromolar, 100 micromolar",,,,,,
+EC_10,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,6 hours,"0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar",metabolism: TBBPA,Exposure to TBBPA in metabolism assay,,,,,,
+EC_11,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24 hours,"0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar",TH receptor activation: TBBPA,Exposure to TBBPA Thyroid hormone receptor activation,,,,,,
+EC_12,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24 hours,10 micromolar,cell viability: TBBPA,Exposure to TBBPA to measure cell viability after longest exposure condition,,,,,,
+EC_2,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"24 hours, four times six hours divided over four days, 96 hours","0.1 micromolar, 0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar, 30 micromolar, 100 micromolar",Exposure condition LUHMES/HepG2,"Model system is exposed to the compound for 24 hours, four times 6 hours divided over four days, or 96 hours with a concentration of 0.1 micromolar, 0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar, 30 micromolar, 100 micromolar",,,,,,
+EC_3,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10 minutes,10 micromolar,TH transport: silychristin,Exposure to silychristin in thyroid hormone transport assay,,,,,,
+EC_4,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2 hours,10 micromolar,deiodinase: silychristin,Exposure to silychristin in deiodinase assay,,,,,,
+EC_5,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,6 hours,10 micromolar,metabolism: silychristin,Exposure to silychristin in metabolism assay,,,,,,
+EC_6,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24 hours,10 micromolar,TH receptor activation: silychristin,Exposure to silychristin Thyroid hormone receptor activation,,,,,,
+EC_7,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,24 hours,10 micromolar,cell viability: silychristin,Exposure to silychristin to measure cell viability after longest exposure condition,,,,,,
+EC_8,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10 minutes,"0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar",TH transport: TBBPA,Exposure to TBBPA in thyroid hormone transport assay,,,,,,
+EC_9,:Experimental_condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2 hours,"0.3 micromolar, 1 micromolar, 3 micromolar, 10 micromolar",deiodinase: TBBPA,Exposure to TBBPA in deiodinase assay,,,,,,
+MS_1,:Model_system,,,,,,,,,,,,,,,,,,,SH-SY5Y,Dopaminergic neuron,SH-SY5Y cells differentiated to a dopamienrgic neuronal phenotype,O_1,,,,,,,,,,,,,,,,,,,,
+MS_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_1,O_1,model_system_relevant_to_organ
+MS_2,:Model_system,,,,,,,,,,,,,,,,,,,LUHMES,Dopaminergic neuron,LUHMES cells differentiated to a dopaminergic neuronal phenotype,O_1,,,,,,,,,,,,,,,,,,,,
+MS_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_2,O_1,model_system_relevant_to_organ
+MS_3,:Model_system,,,,,,,,,,,,,,,,,,,Dopaminergic iPSC,Dopaminergic neuron,iPSC differentiated to a dopaminergic neuronal phenotype,O_1,,,,,,,,,,,,,,,,,,,,
+MS_3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_3,O_1,model_system_relevant_to_organ
+MS_4,:Model_system,,,,,,,,,,,,,,,,,,,HepG2,Liver cell,Immortalized liver cell line ,O_3,,,,,,,,,,,,,,,,,,,,
+MS_4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_4,O_3,model_system_relevant_to_organ
+MS_5,:Model_system,,,,,,,,,,,,,,,,,,,H4,Astrocyte,immortalized astrocyte cell line,O_1,,,,,,,,,,,,,,,,,,,,
+MS_5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_5,O_1,model_system_relevant_to_organ
+MS_6,:Model_system,,,,,,,,,,,,,,,,,,,MO3.13,Oligodendrocyte,immortalized oligodendrocyte cell line,O_1,,,,,,,,,,,,,,,,,,,,
+MS_6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_6,O_1,model_system_relevant_to_organ
+MS_7,:Model_system,,,,,,,,,,,,,,,,,,,SKNAS,neuron,immortalized neuronal cell line,O_1,,,,,,,,,,,,,,,,,,,,
+MS_7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,MS_7,O_1,model_system_relevant_to_organ
+O_1,:Organ,,,,,,,,,Brain,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+O_2,:Organ,,,,,,,,,Kidney,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+O_3,:Organ,,,,,,,,,Liver,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+O_4,:Organ,,,,,,,,,Intestine,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+O_5,:Organ,,,,,,,,,Skin,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
