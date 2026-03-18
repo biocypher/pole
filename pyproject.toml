@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pole"
-version = "0.1.0"
+version = "0.2.0"
 description = "Knowledge Graph of Crime Demo dataset"
 authors = [
     "Sebastian Lobentanzer <sebastian.lobentanzer@gmail.com>",
