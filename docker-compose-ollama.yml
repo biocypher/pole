@@ -8,7 +8,8 @@ services:
       - .:/src/
     command:
       - /bin/bash
-      - /src/scripts/build.sh
+      - -lc
+      - "tr -d '\r' < /src/scripts/build.sh > /tmp/build.sh && chmod +x /tmp/build.sh && /tmp/build.sh"
 
   import:
     image: neo4j:4.4-enterprise
@@ -22,7 +23,8 @@ services:
       - ./scripts/import.sh:/scripts/import.sh
     command:
       - /bin/bash
-      - /scripts/import.sh
+      - -lc
+      - "tr -d '\r' < /scripts/import.sh > /tmp/import.sh && chmod +x /tmp/import.sh && /tmp/import.sh"
     depends_on:
       build:
         condition: service_completed_successfully
