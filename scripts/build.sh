@@ -1,4 +1,4 @@
-#!/bin/bash -c
+#!/bin/bash
 cd /usr/app/
 cp -r /src/* .
 cp config/biocypher_docker_config.yaml config/biocypher_config.yaml
