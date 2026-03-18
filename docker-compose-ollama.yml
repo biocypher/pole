@@ -56,7 +56,7 @@ services:
       import:
         condition: service_completed_successfully
     environment:
-      - OLLAMA_MODEL=llama3.1
+      - OLLAMA_MODEL=qwen3
       - OLLAMA_URL=http://host.docker.internal:11434
       - DOCKER_COMPOSE=true
       - CHAT_TAB=false

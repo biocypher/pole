@@ -1,4 +1,4 @@
-#!/bin/bash -c
+#!/bin/bash
 sleep 2
 ls /data/build2neo/neo4j-admin-import-call.sh
 if [ -f /data/build2neo/neo4j-admin-import-call.sh ]; then
