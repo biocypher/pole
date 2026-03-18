@@ -66,6 +66,7 @@ services:
 
 volumes:
   biocypher_neo4j_volume:
+  
 
 
 networks:
